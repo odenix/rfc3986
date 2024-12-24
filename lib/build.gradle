@@ -42,7 +42,7 @@ test {
 javadoc {
     options {
         noQualifiers 'all'
-        addStringOption('stylesheetfile', file('custom.css').absolutePath)
+        addStringOption('stylesheetfile', file('javadoc.css').absolutePath)
         locale 'en_US'
         encoding 'UTF-8'
         charSet 'UTF-8'
