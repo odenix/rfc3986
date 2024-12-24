@@ -50,7 +50,7 @@ class QueryParamTest
 
 
     @Test
-    void get_key()
+    void getKey()
     {
         assertThat(QueryParam.parse("k=v").getKey()).isEqualTo("k");
         assertThat(QueryParam.parse("k=").getKey()).isEqualTo("k");
@@ -62,7 +62,7 @@ class QueryParamTest
 
 
     @Test
-    void get_value()
+    void getValue()
     {
         assertThat(QueryParam.parse("k=v").getValue()).isEqualTo("v");
         assertThat(QueryParam.parse("k=").getValue()).isEqualTo("");

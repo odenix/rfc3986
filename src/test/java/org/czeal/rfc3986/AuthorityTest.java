@@ -61,7 +61,7 @@ class AuthorityTest
 
 
     @Test
-    void get_user_info()
+    void getUserinfo()
     {
         assertThat(Authority.parse("example.com").getUserinfo()).isNull();
         assertThat(Authority.parse("john@example.com:80").getUserinfo()).isEqualTo("john");
@@ -80,7 +80,7 @@ class AuthorityTest
 
 
     @Test
-    void get_host()
+    void getHost()
     {
         assertThat(Authority.parse("example.com").getHost()).isEqualTo(new Host(REGNAME, "example.com"));
         assertThat(Authority.parse("john@example.com:80").getHost()).isEqualTo(new Host(REGNAME, "example.com"));
@@ -99,7 +99,7 @@ class AuthorityTest
 
 
     @Test
-    void get_port()
+    void getPort()
     {
         assertThat(Authority.parse("example.com").getPort()).isEqualTo(-1);
         assertThat(Authority.parse("john@example.com:80").getPort()).isEqualTo(80);

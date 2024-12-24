@@ -476,7 +476,7 @@ class URIReferenceTest
 
 
     @Test
-    void is_relative_reference()
+    void isRelativeReference()
     {
         assertThat(URIReference.parse("http://example.com").isRelativeReference()).isFalse();
         assertThat(URIReference.parse("hTTp://example.com").isRelativeReference()).isFalse();
@@ -511,7 +511,7 @@ class URIReferenceTest
 
 
     @Test
-    void get_scheme()
+    void getScheme()
     {
         assertThat(URIReference.parse("http://example.com").getScheme()).isEqualTo("http");
         assertThat(URIReference.parse("hTTp://example.com").getScheme()).isEqualTo("hTTp");
@@ -546,7 +546,7 @@ class URIReferenceTest
 
 
     @Test
-    void has_authority()
+    void hasAuthority()
     {
         assertThat(URIReference.parse("http://example.com").hasAuthority()).isTrue();
         assertThat(URIReference.parse("hTTp://example.com").hasAuthority()).isTrue();
@@ -581,7 +581,7 @@ class URIReferenceTest
 
 
     @Test
-    void get_authority()
+    void getAuthority()
     {
         assertThat(URIReference.parse("http://example.com").getAuthority()).isEqualTo(Authority.parse("example.com"));
         assertThat(URIReference.parse("hTTp://example.com").getAuthority()).isEqualTo(Authority.parse("example.com"));
@@ -616,7 +616,7 @@ class URIReferenceTest
 
 
     @Test
-    void get_user_info()
+    void getUserinfo()
     {
         assertThat(URIReference.parse("http://example.com").getUserinfo()).isNull();
         assertThat(URIReference.parse("hTTp://example.com").getUserinfo()).isNull();
@@ -686,7 +686,7 @@ class URIReferenceTest
 
 
     @Test
-    void get_port()
+    void getPort()
     {
         assertThat(URIReference.parse("http://example.com").getPort()).isEqualTo(-1);
         assertThat(URIReference.parse("hTTp://example.com").getPort()).isEqualTo(-1);
@@ -721,7 +721,7 @@ class URIReferenceTest
 
 
     @Test
-    void get_path()
+    void getPath()
     {
         assertThat(URIReference.parse("http://example.com").getPath()).isEqualTo("");
         assertThat(URIReference.parse("hTTp://example.com").getPath()).isEqualTo("");
@@ -756,7 +756,7 @@ class URIReferenceTest
 
 
     @Test
-    void get_query()
+    void getQuery()
     {
         assertThat(URIReference.parse("http://example.com").getQuery()).isNull();
         assertThat(URIReference.parse("hTTp://example.com").getQuery()).isNull();
@@ -791,7 +791,7 @@ class URIReferenceTest
 
 
     @Test
-    void get_fragment()
+    void getFragment()
     {
         assertThat(URIReference.parse("http://example.com").getFragment()).isNull();
         assertThat(URIReference.parse("hTTp://example.com").getFragment()).isNull();

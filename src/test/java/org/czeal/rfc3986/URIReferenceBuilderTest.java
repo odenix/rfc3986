@@ -28,7 +28,7 @@ import org.junit.jupiter.api.Test;
 class URIReferenceBuilderTest
 {
     @Test
-    void from_urireference_with_string()
+    void fromURIReference_with_string()
     {
         var uriRef1 = URIReferenceBuilder.fromURIReference("http://example.com").build();
         assertThat(uriRef1.toString()).isEqualTo("http://example.com");
@@ -410,7 +410,7 @@ class URIReferenceBuilderTest
 
 
     @Test
-    void from_urireference_with_uri_reference()
+    void fromURIReference_with_URIReference()
     {
         var uriRef1 = URIReferenceBuilder.fromURIReference(URIReference.parse("http://example.com")).build();;
         assertThat(uriRef1.toString()).isEqualTo("http://example.com");
@@ -793,7 +793,7 @@ class URIReferenceBuilderTest
 
 
     @Test
-    void set_authority_required()
+    void setAuthorityRequired()
     {
         var uriRef1 = URIReferenceBuilder
             .fromURIReference("http://example.com")
@@ -831,7 +831,7 @@ class URIReferenceBuilderTest
 
 
     @Test
-    void set_scheme()
+    void setScheme()
     {
         var uriRef1 = URIReferenceBuilder
             .fromURIReference("http://example.com")
@@ -854,7 +854,7 @@ class URIReferenceBuilderTest
 
 
     @Test
-    void set_host()
+    void setHost()
     {
         var uriRef1 = URIReferenceBuilder
             .fromURIReference("http://example.com")
@@ -936,7 +936,7 @@ class URIReferenceBuilderTest
 
 
     @Test
-    void set_path()
+    void setPath()
     {
         var uriRef1 = URIReferenceBuilder
             .fromURIReference("http://example.com")
@@ -971,7 +971,7 @@ class URIReferenceBuilderTest
 
 
     @Test
-    void set_path_segments()
+    void appendPathSegments()
     {
         var uriRef1 = URIReferenceBuilder
             .fromURIReference("http://example.com")
@@ -993,7 +993,7 @@ class URIReferenceBuilderTest
 
 
     @Test
-    void append_query_param()
+    void appendQueryParam()
     {
         var uriRef1 = URIReferenceBuilder
             .fromURIReference("http://example.com")
@@ -1021,7 +1021,7 @@ class URIReferenceBuilderTest
 
 
     @Test
-    void replace_query_param()
+    void replaceQueryParam()
     {
         var uriRef1 = URIReferenceBuilder
             .fromURIReference("http://example.com?k=v")
@@ -1042,7 +1042,7 @@ class URIReferenceBuilderTest
 
 
     @Test
-    void remove_query_param()
+    void removeQueryParam()
     {
         var uriRef1 = URIReferenceBuilder
             .fromURIReference("http://example.com?k=v")
@@ -1059,7 +1059,7 @@ class URIReferenceBuilderTest
 
 
     @Test
-    void set_query()
+    void setQuery()
     {
         var uriRef1 = URIReferenceBuilder.fromURIReference("http://example.com").setQuery("k=v").build();
         assertThat(uriRef1.getQuery()).isEqualTo("k=v");
@@ -1079,7 +1079,7 @@ class URIReferenceBuilderTest
 
 
     @Test
-    void set_fragment()
+    void setFragment()
     {
         var uriRef1 = URIReferenceBuilder.fromURIReference("http://example.com").setFragment("section1").build();
         assertThat(uriRef1.getFragment()).isEqualTo("section1");

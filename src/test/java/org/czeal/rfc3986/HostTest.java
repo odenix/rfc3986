@@ -54,7 +54,7 @@ class HostTest
 
 
     @Test
-    void get_type()
+    void getType()
     {
         assertThat(Host.parse("example.com").getType()).isEqualTo(REGNAME);
         assertThat(Host.parse("101.102.103.104").getType()).isEqualTo(IPV4);
@@ -71,7 +71,7 @@ class HostTest
 
 
     @Test
-    void get_value()
+    void getValue()
     {
         assertThat(Host.parse("example.com").getValue()).isEqualTo("example.com");
         assertThat(Host.parse("101.102.103.104").getValue()).isEqualTo("101.102.103.104");
