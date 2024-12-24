@@ -20,9 +20,6 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-// Apply the Java plugin for additional Java-related functionality in Gradle.
-apply plugin: 'java'
-
 // Configure the jar task to include the project version in the generated JAR file name.
 jar {
     archiveBaseName = 'rfc3986'
