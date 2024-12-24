@@ -17,19 +17,19 @@ package org.czeal.rfc3986;
 
 
 import static java.nio.charset.StandardCharsets.UTF_8;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 
 
-public class FragmentNormalizerTest
+class FragmentNormalizerTest
 {
     @Test
-    public void test_normalize()
+    void normalize()
     {
-        assertEquals("fragment", new FragmentNormalizer().normalize("fragment", UTF_8));
-        assertEquals("FRAGMENT", new FragmentNormalizer().normalize("FRAGMENT", UTF_8));
-        assertEquals("fragment", new FragmentNormalizer().normalize("fragmen%74", UTF_8));
-        assertEquals("", new FragmentNormalizer().normalize("", UTF_8));
-        assertEquals((String)null, new FragmentNormalizer().normalize(null, UTF_8));
+        assertThat(new FragmentNormalizer().normalize("fragment", UTF_8)).isEqualTo("fragment");
+        assertThat(new FragmentNormalizer().normalize("FRAGMENT", UTF_8)).isEqualTo("FRAGMENT");
+        assertThat(new FragmentNormalizer().normalize("fragmen%74", UTF_8)).isEqualTo("fragment");
+        assertThat(new FragmentNormalizer().normalize("", UTF_8)).isEqualTo("");
+        assertThat(new FragmentNormalizer().normalize(null, UTF_8)).isEqualTo((String)null);
     }
 }

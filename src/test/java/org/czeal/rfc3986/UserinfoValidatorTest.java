@@ -21,10 +21,10 @@ import static org.czeal.rfc3986.TestUtils.assertThrowsIAE;
 import org.junit.jupiter.api.Test;
 
 
-public class UserinfoValidatorTest
+class UserinfoValidatorTest
 {
     @Test
-    public void test_validate()
+    void validate()
     {
         new UserinfoValidator().validate("userinfo", UTF_8);
         new UserinfoValidator().validate("user:password", UTF_8);

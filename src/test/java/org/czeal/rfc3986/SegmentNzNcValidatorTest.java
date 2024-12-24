@@ -22,10 +22,10 @@ import static org.czeal.rfc3986.TestUtils.assertThrowsNPE;
 import org.junit.jupiter.api.Test;
 
 
-public class SegmentNzNcValidatorTest
+class SegmentNzNcValidatorTest
 {
     @Test
-    public void test_validate()
+    void validate()
     {
         new SegmentNzNcValidator().validate("abcde12345-._~", UTF_8);
         new SegmentNzNcValidator().validate("()+_", UTF_8);

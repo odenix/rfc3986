@@ -17,19 +17,19 @@ package org.czeal.rfc3986;
 
 
 import static java.nio.charset.StandardCharsets.UTF_8;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.czeal.rfc3986.TestUtils.assertThrowsIAE;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 
-public class PercentDecoderTest
+class PercentDecoderTest
 {
     @Test
-    public void test_decode()
+    void decode()
     {
-        assertEquals("aA", PercentDecoder.decode("a%41", UTF_8));
-        assertEquals("aア", PercentDecoder.decode("a%e3%82%A2", UTF_8));
-        assertEquals("aアbc", PercentDecoder.decode("a%e3%82%A2bc", UTF_8));
+        assertThat(PercentDecoder.decode("a%41", UTF_8)).isEqualTo("aA");
+        assertThat(PercentDecoder.decode("a%e3%82%A2", UTF_8)).isEqualTo("aア");
+        assertThat(PercentDecoder.decode("a%e3%82%A2bc", UTF_8)).isEqualTo("aアbc");
 
         assertThrowsIAE(
             "The character \"X\" at the index 2 in the value \"a%XX\" is invalid as a hex digit.",

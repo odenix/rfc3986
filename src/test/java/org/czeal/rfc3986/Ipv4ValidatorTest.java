@@ -20,10 +20,10 @@ import static org.czeal.rfc3986.TestUtils.assertThrowsIAE;
 import org.junit.jupiter.api.Test;
 
 
-public class Ipv4ValidatorTest
+class Ipv4ValidatorTest
 {
     @Test
-    public void test_validate()
+    void validate()
     {
         new Ipv4AddressValidator().validate("192.168.1.1");
         new Ipv4AddressValidator().validate("8.8.8.8");

@@ -16,17 +16,17 @@
 package org.czeal.rfc3986;
 
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.czeal.rfc3986.TestUtils.assertThrowsNPE;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 
-public class SchemeNormalizerTest
+class SchemeNormalizerTest
 {
     @Test
-    public void test_normalize()
+    void normalize()
     {
-        assertEquals("http", new SchemeNormalizer().normalize("hTTp"));
+        assertThat(new SchemeNormalizer().normalize("hTTp")).isEqualTo("http");
         assertThrowsNPE(() -> new SchemeNormalizer().normalize(null));
     }
 }

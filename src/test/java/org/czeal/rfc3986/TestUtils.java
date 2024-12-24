@@ -16,8 +16,7 @@
 package org.czeal.rfc3986;
 
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.function.Executable;
 
@@ -58,12 +57,12 @@ public class TestUtils
         T ex = assertThrows(expectedType, executable);
 
         // Ensure the exception is not null.
-        assertNotNull(ex);
+        assertThat(ex).isNotNull();
 
         // Ensure the message matches the expected one.
         if (message != null)
         {
-            assertEquals(message, ex.getMessage());
+            assertThat(ex.getMessage()).isEqualTo(message);
         }
     }
 }

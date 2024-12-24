@@ -20,10 +20,10 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 import org.junit.jupiter.api.Test;
 
 
-public class SegmentValidatorTest
+class SegmentValidatorTest
 {
     @Test
-    public void test_validate()
+    void validate()
     {
         new SegmentValidator().validate("abcde12345-._~", UTF_8);
         new SegmentValidator().validate("()+_", UTF_8);

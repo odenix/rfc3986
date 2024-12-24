@@ -17,20 +17,20 @@ package org.czeal.rfc3986;
 
 
 import static java.nio.charset.StandardCharsets.UTF_8;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 
 
-public class PathNormalizerTest
+class PathNormalizerTest
 {
     @Test
-    public void test_validate()
+    void validate()
     {
-        assertEquals("/", new PathNormalizer().normalize("", UTF_8, true));
-        assertEquals("", new PathNormalizer().normalize("", UTF_8, false));
-        assertEquals("/b", new PathNormalizer().normalize("/a/../b", UTF_8, true));
-        assertEquals("/b", new PathNormalizer().normalize("/a/../../b", UTF_8, true));
-        assertEquals("b", new PathNormalizer().normalize("../b", UTF_8, true));
-        assertEquals("/a/b/c", new PathNormalizer().normalize("/a/b/c", UTF_8, true));
+        assertThat(new PathNormalizer().normalize("", UTF_8, true)).isEqualTo("/");
+        assertThat(new PathNormalizer().normalize("", UTF_8, false)).isEqualTo("");
+        assertThat(new PathNormalizer().normalize("/a/../b", UTF_8, true)).isEqualTo("/b");
+        assertThat(new PathNormalizer().normalize("/a/../../b", UTF_8, true)).isEqualTo("/b");
+        assertThat(new PathNormalizer().normalize("../b", UTF_8, true)).isEqualTo("b");
+        assertThat(new PathNormalizer().normalize("/a/b/c", UTF_8, true)).isEqualTo("/a/b/c");
     }
 }

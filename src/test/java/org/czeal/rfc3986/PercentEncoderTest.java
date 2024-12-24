@@ -17,16 +17,16 @@ package org.czeal.rfc3986;
 
 
 import static java.nio.charset.StandardCharsets.UTF_8;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 
 
-public class PercentEncoderTest
+class PercentEncoderTest
 {
     @Test
-    public void test_encode()
+    void encode()
     {
-        assertEquals("aA%3F", PercentEncoder.encode("aA?", UTF_8));
-        assertEquals("abcD123~%E3%82%A2", PercentEncoder.encode("abcD123~ア", UTF_8));
+        assertThat(PercentEncoder.encode("aA?", UTF_8)).isEqualTo("aA%3F");
+        assertThat(PercentEncoder.encode("abcD123~ア", UTF_8)).isEqualTo("abcD123~%E3%82%A2");
     }
 }

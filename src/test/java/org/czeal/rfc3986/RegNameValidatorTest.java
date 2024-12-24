@@ -21,10 +21,10 @@ import static org.czeal.rfc3986.TestUtils.assertThrowsIAE;
 import org.junit.jupiter.api.Test;
 
 
-public class RegNameValidatorTest
+class RegNameValidatorTest
 {
     @Test
-    public void test_validate()
+    void validate()
     {
         new RegNameValidator().validate("example.com", UTF_8);
         new RegNameValidator().validate("a_example.com", UTF_8);

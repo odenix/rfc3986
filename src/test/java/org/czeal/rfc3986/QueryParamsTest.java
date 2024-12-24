@@ -16,15 +16,15 @@
 package org.czeal.rfc3986;
 
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 
-public class QueryParamsTest
+class QueryParamsTest
 {
     @Test
-    public void test_parse()
+    void parse()
     {
         assertDoesNotThrow(() -> QueryParams.parse("k1=v1&k2=v2"));
         assertDoesNotThrow(() -> QueryParams.parse("k1=v1&k2"));
@@ -36,7 +36,7 @@ public class QueryParamsTest
 
 
     @Test
-    public void test_add()
+    void add()
     {
         assertDoesNotThrow(() -> QueryParams.parse("k1=v1&k2=v2").add("k3", "v3"));
         assertDoesNotThrow(() -> QueryParams.parse("k1=v1&k2").add("k3", null));
@@ -45,7 +45,7 @@ public class QueryParamsTest
 
 
     @Test
-    public void test_replace()
+    void replace()
     {
         assertDoesNotThrow(() -> QueryParams.parse("k1=v1&k2=v2").replace("k2", "new-value"));
         assertDoesNotThrow(() -> QueryParams.parse("k1=v1&k2=v2").replace("k3", "v3"));
@@ -55,7 +55,7 @@ public class QueryParamsTest
 
 
     @Test
-    public void test_remove()
+    void remove()
     {
         assertDoesNotThrow(() -> QueryParams.parse("k1=v1&k2=v2").remove("k2"));
         assertDoesNotThrow(() -> QueryParams.parse("k1=v1&k2=v2-1&k2=v2-2").remove("k2"));
@@ -65,10 +65,10 @@ public class QueryParamsTest
 
 
     @Test
-    public void test_toString()
+    void to_string()
     {
-        assertEquals("k1=v1&k2=v2", QueryParams.parse("k1=v1&k2=v2").toString());
-        assertEquals("k1=v1&k2", QueryParams.parse("k1=v1&k2").toString());
-        assertEquals("k1=v1&", QueryParams.parse("k1=v1&").toString());
+        assertThat(QueryParams.parse("k1=v1&k2=v2").toString()).isEqualTo("k1=v1&k2=v2");
+        assertThat(QueryParams.parse("k1=v1&k2").toString()).isEqualTo("k1=v1&k2");
+        assertThat(QueryParams.parse("k1=v1&").toString()).isEqualTo("k1=v1&");
     }
 }

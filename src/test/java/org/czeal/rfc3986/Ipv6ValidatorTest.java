@@ -20,10 +20,10 @@ import static org.czeal.rfc3986.TestUtils.assertThrowsIAE;
 import org.junit.jupiter.api.Test;
 
 
-public class Ipv6ValidatorTest
+class Ipv6ValidatorTest
 {
     @Test
-    public void test_validate()
+    void validate()
     {
         new Ipv6AddressValidator().validate("2001:0db8:85a3:0000:0000:8a2e:0370:7334");
         new Ipv6AddressValidator().validate("::1");

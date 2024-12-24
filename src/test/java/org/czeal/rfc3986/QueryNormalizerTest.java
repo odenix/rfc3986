@@ -17,18 +17,18 @@ package org.czeal.rfc3986;
 
 
 import static java.nio.charset.StandardCharsets.UTF_8;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 
 
-public class QueryNormalizerTest
+class QueryNormalizerTest
 {
     @Test
-    public void test_normalize()
+    void normalize()
     {
-        assertEquals("k1=v1&k2=v2", new QueryNormalizer().normalize("k1=v1&k2=v2", UTF_8));
-        assertEquals("K1=V1&K2=V2", new QueryNormalizer().normalize("K1=V1&K2=V2", UTF_8));
-        assertEquals("", new QueryNormalizer().normalize("", UTF_8));
-        assertEquals((String)null, new QueryNormalizer().normalize(null, UTF_8));
+        assertThat(new QueryNormalizer().normalize("k1=v1&k2=v2", UTF_8)).isEqualTo("k1=v1&k2=v2");
+        assertThat(new QueryNormalizer().normalize("K1=V1&K2=V2", UTF_8)).isEqualTo("K1=V1&K2=V2");
+        assertThat(new QueryNormalizer().normalize("", UTF_8)).isEqualTo("");
+        assertThat(new QueryNormalizer().normalize(null, UTF_8)).isEqualTo((String)null);
     }
 }

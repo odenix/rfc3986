@@ -17,18 +17,19 @@ package org.czeal.rfc3986;
 
 
 import static java.nio.charset.StandardCharsets.UTF_8;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.Test;
 
 
-public class UserinfoNormalizerTest
+class UserinfoNormalizerTest
 {
     @Test
-    public void test_normalize()
+    void normalize()
     {
-        assertEquals("userINFO", new UserinfoNormalizer().normalize("userINFO", UTF_8));
-        assertEquals("userinfo", new UserinfoNormalizer().normalize("userinf%6F", UTF_8));
-        assertEquals("", new UserinfoNormalizer().normalize("", UTF_8));
-        assertEquals(null, new UserinfoNormalizer().normalize(null, UTF_8));
+        assertThat(new UserinfoNormalizer().normalize("userINFO", UTF_8)).isEqualTo("userINFO");
+        assertThat(new UserinfoNormalizer().normalize("userinf%6F", UTF_8)).isEqualTo("userinfo");
+        assertThat(new UserinfoNormalizer().normalize("", UTF_8)).isEqualTo("");
+        assertThat(new UserinfoNormalizer().normalize(null, UTF_8)).isNull();
     }
 }

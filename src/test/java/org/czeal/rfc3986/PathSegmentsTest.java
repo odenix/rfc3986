@@ -16,16 +16,16 @@
 package org.czeal.rfc3986;
 
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.czeal.rfc3986.TestUtils.assertThrowsNPE;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 
-public class PathSegmentsTest
+class PathSegmentsTest
 {
     @Test
-    public void test_parse()
+    void parse()
     {
         assertDoesNotThrow(() -> PathSegments.parse("/a/b/c"));
         assertDoesNotThrow(() -> PathSegments.parse("/"));
@@ -35,7 +35,7 @@ public class PathSegmentsTest
 
 
     @Test
-    public void test_add()
+    void add()
     {
         assertDoesNotThrow(() -> PathSegments.parse("/a/b/c").add("d", "e"));
         assertDoesNotThrow(() -> PathSegments.parse("/a/b/c").add(""));
@@ -51,9 +51,9 @@ public class PathSegmentsTest
 
 
     @Test
-    public void test_toString()
+    void to_string()
     {
-        assertEquals("/a/b/c", PathSegments.parse("/a/b/c").toString());
-        assertEquals("/a/b/c/d/e", PathSegments.parse("/a/b/c").add("d", "e").toString());
+        assertThat(PathSegments.parse("/a/b/c").toString()).isEqualTo("/a/b/c");
+        assertThat(PathSegments.parse("/a/b/c").add("d", "e").toString()).isEqualTo("/a/b/c/d/e");
     }
 }

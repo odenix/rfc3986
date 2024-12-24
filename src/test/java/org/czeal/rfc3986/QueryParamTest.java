@@ -16,16 +16,16 @@
 package org.czeal.rfc3986;
 
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.czeal.rfc3986.TestUtils.assertThrowsNPE;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 
-public class QueryParamTest
+class QueryParamTest
 {
     @Test
-    public void test_parse()
+    void parse()
     {
         assertDoesNotThrow(() -> QueryParam.parse("k=v"));
         assertDoesNotThrow(() -> QueryParam.parse("k="));
@@ -38,37 +38,37 @@ public class QueryParamTest
 
 
     @Test
-    public void test_toString()
+    void to_string()
     {
-        assertEquals("k=v", QueryParam.parse("k=v").toString());
-        assertEquals("k=", QueryParam.parse("k=").toString());
-        assertEquals("=v", QueryParam.parse("=v").toString());
-        assertEquals("k", QueryParam.parse("k").toString());
-        assertEquals("", QueryParam.parse("").toString());
-        assertEquals("k=v=v", QueryParam.parse("k=v=v").toString());
+        assertThat(QueryParam.parse("k=v").toString()).isEqualTo("k=v");
+        assertThat(QueryParam.parse("k=").toString()).isEqualTo("k=");
+        assertThat(QueryParam.parse("=v").toString()).isEqualTo("=v");
+        assertThat(QueryParam.parse("k").toString()).isEqualTo("k");
+        assertThat(QueryParam.parse("").toString()).isEqualTo("");
+        assertThat(QueryParam.parse("k=v=v").toString()).isEqualTo("k=v=v");
     }
 
 
     @Test
-    public void test_getKey()
+    void get_key()
     {
-        assertEquals("k", QueryParam.parse("k=v").getKey());
-        assertEquals("k", QueryParam.parse("k=").getKey());
-        assertEquals("",  QueryParam.parse("=v").getKey());
-        assertEquals("k", QueryParam.parse("k").getKey());
-        assertEquals("",  QueryParam.parse("").getKey());
-        assertEquals("k", QueryParam.parse("k=v=v").getKey());
+        assertThat(QueryParam.parse("k=v").getKey()).isEqualTo("k");
+        assertThat(QueryParam.parse("k=").getKey()).isEqualTo("k");
+        assertThat(QueryParam.parse("=v").getKey()).isEqualTo("");
+        assertThat(QueryParam.parse("k").getKey()).isEqualTo("k");
+        assertThat(QueryParam.parse("").getKey()).isEqualTo("");
+        assertThat(QueryParam.parse("k=v=v").getKey()).isEqualTo("k");
     }
 
 
     @Test
-    public void test_getValue()
+    void get_value()
     {
-        assertEquals("v", QueryParam.parse("k=v").getValue());
-        assertEquals("",  QueryParam.parse("k=").getValue());
-        assertEquals("v", QueryParam.parse("=v").getValue());
-        assertEquals((String)null, QueryParam.parse("k").getValue());
-        assertEquals((String)null, QueryParam.parse("").getValue());
-        assertEquals("v=v", QueryParam.parse("k=v=v").getValue());
+        assertThat(QueryParam.parse("k=v").getValue()).isEqualTo("v");
+        assertThat(QueryParam.parse("k=").getValue()).isEqualTo("");
+        assertThat(QueryParam.parse("=v").getValue()).isEqualTo("v");
+        assertThat(QueryParam.parse("k").getValue()).isEqualTo((String)null);
+        assertThat(QueryParam.parse("").getValue()).isEqualTo((String)null);
+        assertThat(QueryParam.parse("k=v=v").getValue()).isEqualTo("v=v");
     }
 }

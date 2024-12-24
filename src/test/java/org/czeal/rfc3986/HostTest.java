@@ -18,7 +18,7 @@ package org.czeal.rfc3986;
 
 import static org.czeal.rfc3986.TestUtils.assertThrowsIAE;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.czeal.rfc3986.HostType.IPV4;
 import static org.czeal.rfc3986.HostType.IPV6;
 import static org.czeal.rfc3986.HostType.IPVFUTURE;
@@ -26,10 +26,10 @@ import static org.czeal.rfc3986.HostType.REGNAME;
 import org.junit.jupiter.api.Test;
 
 
-public class HostTest
+class HostTest
 {
     @Test
-    public void test_parse()
+    void parse()
     {
         assertDoesNotThrow(() -> Host.parse("example.com"));
         assertDoesNotThrow(() -> Host.parse("101.102.103.104"));
@@ -54,35 +54,35 @@ public class HostTest
 
 
     @Test
-    public void test_getType()
+    void get_type()
     {
-        assertEquals(REGNAME, Host.parse("example.com").getType());
-        assertEquals(IPV4, Host.parse("101.102.103.104").getType());
-        assertEquals(IPV6, Host.parse("[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]").getType());
-        assertEquals(IPV6, Host.parse("[2001:db8:0:1:1:1:1:1]").getType());
-        assertEquals(IPV6, Host.parse("[2001:0:9d38:6abd:0:0:0:42]").getType());
-        assertEquals(IPV6, Host.parse("[fe80::1]").getType());
-        assertEquals(IPV6, Host.parse("[2001:0:3238:DFE1:63::FEFB]").getType());
-        assertEquals(IPVFUTURE, Host.parse("[v1.fe80::a+en1]").getType());
-        assertEquals(REGNAME, Host.parse("%65%78%61%6D%70%6C%65%2E%63%6F%6D").getType());
-        assertEquals(REGNAME, Host.parse("").getType());
-        assertEquals(REGNAME, Host.parse(null).getType());
+        assertThat(Host.parse("example.com").getType()).isEqualTo(REGNAME);
+        assertThat(Host.parse("101.102.103.104").getType()).isEqualTo(IPV4);
+        assertThat(Host.parse("[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]").getType()).isEqualTo(IPV6);
+        assertThat(Host.parse("[2001:db8:0:1:1:1:1:1]").getType()).isEqualTo(IPV6);
+        assertThat(Host.parse("[2001:0:9d38:6abd:0:0:0:42]").getType()).isEqualTo(IPV6);
+        assertThat(Host.parse("[fe80::1]").getType()).isEqualTo(IPV6);
+        assertThat(Host.parse("[2001:0:3238:DFE1:63::FEFB]").getType()).isEqualTo(IPV6);
+        assertThat(Host.parse("[v1.fe80::a+en1]").getType()).isEqualTo(IPVFUTURE);
+        assertThat(Host.parse("%65%78%61%6D%70%6C%65%2E%63%6F%6D").getType()).isEqualTo(REGNAME);
+        assertThat(Host.parse("").getType()).isEqualTo(REGNAME);
+        assertThat(Host.parse(null).getType()).isEqualTo(REGNAME);
     }
 
 
     @Test
-    public void test_getValue()
+    void get_value()
     {
-        assertEquals("example.com", Host.parse("example.com").getValue());
-        assertEquals("101.102.103.104", Host.parse("101.102.103.104").getValue());
-        assertEquals("[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]", Host.parse("[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]").getValue());
-        assertEquals("[2001:db8:0:1:1:1:1:1]", Host.parse("[2001:db8:0:1:1:1:1:1]").getValue());
-        assertEquals("[2001:0:9d38:6abd:0:0:0:42]", Host.parse("[2001:0:9d38:6abd:0:0:0:42]").getValue());
-        assertEquals("[fe80::1]", Host.parse("[fe80::1]").getValue());
-        assertEquals("[2001:0:3238:DFE1:63::FEFB]", Host.parse("[2001:0:3238:DFE1:63::FEFB]").getValue());
-        assertEquals("[v1.fe80::a+en1]", Host.parse("[v1.fe80::a+en1]").getValue());
-        assertEquals("%65%78%61%6D%70%6C%65%2E%63%6F%6D", Host.parse("%65%78%61%6D%70%6C%65%2E%63%6F%6D").getValue());
-        assertEquals("", Host.parse("").getValue());
-        assertEquals((String)null, Host.parse(null).getValue());
+        assertThat(Host.parse("example.com").getValue()).isEqualTo("example.com");
+        assertThat(Host.parse("101.102.103.104").getValue()).isEqualTo("101.102.103.104");
+        assertThat(Host.parse("[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]").getValue()).isEqualTo("[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]");
+        assertThat(Host.parse("[2001:db8:0:1:1:1:1:1]").getValue()).isEqualTo("[2001:db8:0:1:1:1:1:1]");
+        assertThat(Host.parse("[2001:0:9d38:6abd:0:0:0:42]").getValue()).isEqualTo("[2001:0:9d38:6abd:0:0:0:42]");
+        assertThat(Host.parse("[fe80::1]").getValue()).isEqualTo("[fe80::1]");
+        assertThat(Host.parse("[2001:0:3238:DFE1:63::FEFB]").getValue()).isEqualTo("[2001:0:3238:DFE1:63::FEFB]");
+        assertThat(Host.parse("[v1.fe80::a+en1]").getValue()).isEqualTo("[v1.fe80::a+en1]");
+        assertThat(Host.parse("%65%78%61%6D%70%6C%65%2E%63%6F%6D").getValue()).isEqualTo("%65%78%61%6D%70%6C%65%2E%63%6F%6D");
+        assertThat(Host.parse("").getValue()).isEqualTo("");
+        assertThat(Host.parse(null).getValue()).isEqualTo((String)null);
     }
 }

@@ -21,10 +21,10 @@ import static org.czeal.rfc3986.TestUtils.assertThrowsIAE;
 import org.junit.jupiter.api.Test;
 
 
-public class QueryValidatorTest
+class QueryValidatorTest
 {
     @Test
-    public void test_validate()
+    void validate()
     {
         new QueryValidator().validate("k1=v1&k2=v2", UTF_8);
         new QueryValidator().validate("", UTF_8);

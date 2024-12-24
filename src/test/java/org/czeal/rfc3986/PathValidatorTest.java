@@ -21,10 +21,10 @@ import static org.czeal.rfc3986.TestUtils.assertThrowsIAE;
 import org.junit.jupiter.api.Test;
 
 
-public class PathValidatorTest
+class PathValidatorTest
 {
     @Test
-    public void test_validate()
+    void validate()
     {
         //
         // relativeReference = true, hasAuthority = true

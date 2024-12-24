@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import org.junit.jupiter.api.Test;
 
 
-public class PortTest
+class PortTest
 {
     private static final String PORT1 = "80";
     private static final String PORT2 = "";
@@ -31,7 +31,7 @@ public class PortTest
 
 
     @Test
-    public void test_parse()
+    void parse()
     {
         assertDoesNotThrow(() -> new PortValidator().validate(PORT1));
         assertDoesNotThrow(() -> new PortValidator().validate(PORT2));

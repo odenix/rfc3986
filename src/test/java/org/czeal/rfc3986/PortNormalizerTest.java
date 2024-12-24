@@ -17,17 +17,18 @@ package org.czeal.rfc3986;
 
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class PortNormalizerTest
+class PortNormalizerTest
 {
     @Test
-    public void test_normalize()
+    void normalize()
     {
-        assertEquals(-1, new PortNormalizer().normalize(80, "http"));
-        assertEquals(80, new PortNormalizer().normalize(80, "custom"));
-        assertEquals(-1, new PortNormalizer().normalize(443, "https"));
-        assertEquals(443, new PortNormalizer().normalize(443, "custom"));
+        assertThat(new PortNormalizer().normalize(80, "http")).isEqualTo(-1);
+        assertThat(new PortNormalizer().normalize(80, "custom")).isEqualTo(80);
+        assertThat(new PortNormalizer().normalize(443, "https")).isEqualTo(-1);
+        assertThat(new PortNormalizer().normalize(443, "custom")).isEqualTo(443);
     }
 }

@@ -17,8 +17,8 @@ package org.czeal.rfc3986;
 
 
 import static java.nio.charset.StandardCharsets.UTF_8;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.czeal.rfc3986.TestUtils.assertThrowsIAE;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.czeal.rfc3986.HostType.IPV4;
 import static org.czeal.rfc3986.HostType.IPV6;
 import static org.czeal.rfc3986.HostType.IPVFUTURE;
@@ -26,74 +26,74 @@ import static org.czeal.rfc3986.HostType.REGNAME;
 import org.junit.jupiter.api.Test;
 
 
-public class AuthorityBuilderTest
+class AuthorityBuilderTest
 {
     @Test
-    public void test_build()
+    void build()
     {
         var authority1 = new AuthorityBuilder()
             .setCharset(UTF_8).setUserinfo("john").setHost("example.com").setPort(80).build();
-        assertEquals("john", authority1.getUserinfo());
-        assertEquals(REGNAME, authority1.getHost().getType());
-        assertEquals("example.com", authority1.getHost().getValue());
-        assertEquals(80, authority1.getPort());
-        assertEquals("john@example.com:80", authority1.toString());
+        assertThat(authority1.getUserinfo()).isEqualTo("john");
+        assertThat(authority1.getHost().getType()).isEqualTo(REGNAME);
+        assertThat(authority1.getHost().getValue()).isEqualTo("example.com");
+        assertThat(authority1.getPort()).isEqualTo(80);
+        assertThat(authority1.toString()).isEqualTo("john@example.com:80");
 
         var authority2 = new AuthorityBuilder()
             .setCharset(UTF_8).setHost("example.com").setPort(80).build();
-        assertEquals(null, authority2.getUserinfo());
-        assertEquals(REGNAME, authority2.getHost().getType());
-        assertEquals("example.com", authority2.getHost().getValue());
-        assertEquals(80, authority2.getPort());
-        assertEquals("example.com:80", authority2.toString());
+        assertThat(authority2.getUserinfo()).isNull();
+        assertThat(authority2.getHost().getType()).isEqualTo(REGNAME);
+        assertThat(authority2.getHost().getValue()).isEqualTo("example.com");
+        assertThat(authority2.getPort()).isEqualTo(80);
+        assertThat(authority2.toString()).isEqualTo("example.com:80");
 
         var authority3 = new AuthorityBuilder()
             .setCharset(UTF_8).setPort(80).build();
-        assertEquals(null, authority3.getUserinfo());
-        assertEquals(REGNAME, authority3.getHost().getType());
-        assertEquals(null, authority3.getHost().getValue());
-        assertEquals(80, authority3.getPort());
-        assertEquals(":80", authority3.toString());
+        assertThat(authority3.getUserinfo()).isNull();
+        assertThat(authority3.getHost().getType()).isEqualTo(REGNAME);
+        assertThat(authority3.getHost().getValue()).isNull();
+        assertThat(authority3.getPort()).isEqualTo(80);
+        assertThat(authority3.toString()).isEqualTo(":80");
 
         var authority4 = new AuthorityBuilder()
             .setCharset(UTF_8).build();
-        assertEquals(null, authority4.getUserinfo());
-        assertEquals(REGNAME, authority3.getHost().getType());
-        assertEquals(null, authority3.getHost().getValue());
-        assertEquals(-1, authority4.getPort());
-        assertEquals("", authority4.toString());
+        assertThat(authority4.getUserinfo()).isNull();
+        assertThat(authority3.getHost().getType()).isEqualTo(REGNAME);
+        assertThat(authority3.getHost().getValue()).isNull();
+        assertThat(authority4.getPort()).isEqualTo(-1);
+        assertThat(authority4.toString()).isEqualTo("");
 
         var authority5 = new AuthorityBuilder()
             .setCharset(UTF_8).setUserinfo("john").setHost("101.102.103.104").setPort(80).build();
-        assertEquals("john", authority5.getUserinfo());
-        assertEquals(IPV4, authority5.getHost().getType());
-        assertEquals("101.102.103.104", authority5.getHost().getValue());
-        assertEquals(80, authority5.getPort());
-        assertEquals("john@101.102.103.104:80", authority5.toString());
+        assertThat(authority5.getUserinfo()).isEqualTo("john");
+        assertThat(authority5.getHost().getType()).isEqualTo(IPV4);
+        assertThat(authority5.getHost().getValue()).isEqualTo("101.102.103.104");
+        assertThat(authority5.getPort()).isEqualTo(80);
+        assertThat(authority5.toString()).isEqualTo("john@101.102.103.104:80");
 
         var authority6 = new AuthorityBuilder()
             .setCharset(UTF_8).setUserinfo("john").setHost("101.102.103.104").setPort(80).build();
-        assertEquals("john", authority6.getUserinfo());
-        assertEquals(IPV4, authority6.getHost().getType());
-        assertEquals("101.102.103.104", authority6.getHost().getValue());
-        assertEquals(80, authority6.getPort());
-        assertEquals("john@101.102.103.104:80", authority6.toString());
+        assertThat(authority6.getUserinfo()).isEqualTo("john");
+        assertThat(authority6.getHost().getType()).isEqualTo(IPV4);
+        assertThat(authority6.getHost().getValue()).isEqualTo("101.102.103.104");
+        assertThat(authority6.getPort()).isEqualTo(80);
+        assertThat(authority6.toString()).isEqualTo("john@101.102.103.104:80");
 
         var authority7 = new AuthorityBuilder()
             .setCharset(UTF_8).setUserinfo("john").setHost("[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]").setPort(80).build();
-        assertEquals("john", authority7.getUserinfo());
-        assertEquals(IPV6, authority7.getHost().getType());
-        assertEquals("[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]", authority7.getHost().getValue());
-        assertEquals(80, authority7.getPort());
-        assertEquals("john@[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]:80", authority7.toString());
+        assertThat(authority7.getUserinfo()).isEqualTo("john");
+        assertThat(authority7.getHost().getType()).isEqualTo(IPV6);
+        assertThat(authority7.getHost().getValue()).isEqualTo("[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]");
+        assertThat(authority7.getPort()).isEqualTo(80);
+        assertThat(authority7.toString()).isEqualTo("john@[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]:80");
 
         var authority8 = new AuthorityBuilder()
             .setCharset(UTF_8).setUserinfo("john").setHost("[v1.fe80::a+en1]").setPort(80).build();
-        assertEquals("john", authority8.getUserinfo());
-        assertEquals(IPVFUTURE, authority8.getHost().getType());
-        assertEquals("[v1.fe80::a+en1]", authority8.getHost().getValue());
-        assertEquals(80, authority8.getPort());
-        assertEquals("john@[v1.fe80::a+en1]:80", authority8.toString());
+        assertThat(authority8.getUserinfo()).isEqualTo("john");
+        assertThat(authority8.getHost().getType()).isEqualTo(IPVFUTURE);
+        assertThat(authority8.getHost().getValue()).isEqualTo("[v1.fe80::a+en1]");
+        assertThat(authority8.getPort()).isEqualTo(80);
+        assertThat(authority8.toString()).isEqualTo("john@[v1.fe80::a+en1]:80");
 
         assertThrowsIAE(
             "The userinfo value \"?\" has an invalid character \"?\" at the index 0.",

@@ -21,10 +21,10 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import org.junit.jupiter.api.Test;
 
 
-public class IpvFutureValidatorTest
+class IpvFutureValidatorTest
 {
     @Test
-    public void test_validate()
+    void validate()
     {
         assertDoesNotThrow(
             () -> new IpvFutureValidator().validate("v1.fe80::a+en1"));

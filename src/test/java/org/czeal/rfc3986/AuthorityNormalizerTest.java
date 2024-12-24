@@ -14,36 +14,35 @@
  * limitations under the License.
  */
 package org.czeal.rfc3986;
-
-
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.czeal.rfc3986.HostType.REGNAME;
 import static java.nio.charset.StandardCharsets.UTF_8;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 
-public class AuthorityNormalizerTest
+class AuthorityNormalizerTest
 {
     @Test
-    public void test_normalize()
+    void normalize()
     {
         var normalized1 = new AuthorityNormalizer().normalize(
             Authority.parse("userinfoABC@EXAMPLE.com:80"), UTF_8, "http");
-        assertEquals("userinfoABC", normalized1.getUserinfo());
-        assertEquals(REGNAME, normalized1.getHost().getType());
-        assertEquals("example.com", normalized1.getHost().getValue());
-        assertEquals(-1, normalized1.getPort());
-        assertEquals("userinfoABC@example.com", normalized1.toString());
+        assertThat(normalized1.getUserinfo()).isEqualTo("userinfoABC");
+        assertThat(normalized1.getHost().getType()).isEqualTo(REGNAME);
+        assertThat(normalized1.getHost().getValue()).isEqualTo("example.com");
+        assertThat(normalized1.getPort()).isEqualTo(-1);
+        assertThat(normalized1.toString()).isEqualTo("userinfoABC@example.com");
 
         var normalized2 = new AuthorityNormalizer().normalize(
             Authority.parse("userinfoABC@EXAMPLE.com:443"), UTF_8, "https");
-        assertEquals("userinfoABC", normalized2.getUserinfo());
-        assertEquals(REGNAME, normalized2.getHost().getType());
-        assertEquals("example.com", normalized2.getHost().getValue());
-        assertEquals(-1, normalized2.getPort());
-        assertEquals("userinfoABC@example.com", normalized2.toString());
+        assertThat(normalized2.getUserinfo()).isEqualTo("userinfoABC");
+        assertThat(normalized2.getHost().getType()).isEqualTo(REGNAME);
+        assertThat(normalized2.getHost().getValue()).isEqualTo("example.com");
+        assertThat(normalized2.getPort()).isEqualTo(-1);
+        assertThat(normalized2.toString()).isEqualTo("userinfoABC@example.com");
 
         var normalized3 = new AuthorityNormalizer().normalize(null, UTF_8, "http");
-        assertEquals(null, normalized3);
+        assertThat(normalized3).isNull();
     }
 }

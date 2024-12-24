@@ -18,7 +18,7 @@ package org.czeal.rfc3986;
 
 import static org.czeal.rfc3986.TestUtils.assertThrowsIAE;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.czeal.rfc3986.HostType.IPV4;
 import static org.czeal.rfc3986.HostType.IPV6;
 import static org.czeal.rfc3986.HostType.IPVFUTURE;
@@ -26,10 +26,10 @@ import static org.czeal.rfc3986.HostType.REGNAME;
 import org.junit.jupiter.api.Test;
 
 
-public class AuthorityTest
+class AuthorityTest
 {
     @Test
-    public void test_parse()
+    void parse()
     {
         assertDoesNotThrow(() -> Authority.parse("example.com"));
         assertDoesNotThrow(() -> Authority.parse("john@example.com:80"));
@@ -61,77 +61,77 @@ public class AuthorityTest
 
 
     @Test
-    public void test_getUserInfo()
+    void get_user_info()
     {
-        assertEquals(null, Authority.parse("example.com").getUserinfo());
-        assertEquals("john", Authority.parse("john@example.com:80").getUserinfo());
-        assertEquals(null, Authority.parse("example.com:001").getUserinfo());
-        assertEquals("%6A%6F%68%6E", Authority.parse("%6A%6F%68%6E@example.com").getUserinfo());
-        assertEquals(null, Authority.parse("101.102.103.104").getUserinfo());
-        assertEquals(null, Authority.parse("[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]").getUserinfo());
-        assertEquals(null, Authority.parse("[2001:db8:0:1:1:1:1:1]").getUserinfo());
-        assertEquals(null, Authority.parse("[2001:0:9d38:6abd:0:0:0:42]").getUserinfo());
-        assertEquals(null, Authority.parse("[fe80::1]").getUserinfo());
-        assertEquals(null, Authority.parse("[2001:0:3238:DFE1:63::FEFB]").getUserinfo());
-        assertEquals(null, Authority.parse("[v1.fe80::a+en1]").getUserinfo());
-        assertEquals(null, Authority.parse("%65%78%61%6D%70%6C%65%2E%63%6F%6D").getUserinfo());
-        assertEquals(null, Authority.parse("").getUserinfo());
+        assertThat(Authority.parse("example.com").getUserinfo()).isNull();
+        assertThat(Authority.parse("john@example.com:80").getUserinfo()).isEqualTo("john");
+        assertThat(Authority.parse("example.com:001").getUserinfo()).isNull();
+        assertThat(Authority.parse("%6A%6F%68%6E@example.com").getUserinfo()).isEqualTo("%6A%6F%68%6E");
+        assertThat(Authority.parse("101.102.103.104").getUserinfo()).isNull();
+        assertThat(Authority.parse("[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]").getUserinfo()).isNull();
+        assertThat(Authority.parse("[2001:db8:0:1:1:1:1:1]").getUserinfo()).isNull();
+        assertThat(Authority.parse("[2001:0:9d38:6abd:0:0:0:42]").getUserinfo()).isNull();
+        assertThat(Authority.parse("[fe80::1]").getUserinfo()).isNull();
+        assertThat(Authority.parse("[2001:0:3238:DFE1:63::FEFB]").getUserinfo()).isNull();
+        assertThat(Authority.parse("[v1.fe80::a+en1]").getUserinfo()).isNull();
+        assertThat(Authority.parse("%65%78%61%6D%70%6C%65%2E%63%6F%6D").getUserinfo()).isNull();
+        assertThat(Authority.parse("").getUserinfo()).isNull();
     }
 
 
     @Test
-    public void test_getHost()
+    void get_host()
     {
-        assertEquals(new Host(REGNAME, "example.com"), Authority.parse("example.com").getHost());
-        assertEquals(new Host(REGNAME, "example.com"), Authority.parse("john@example.com:80").getHost());
-        assertEquals(new Host(REGNAME, "example.com"), Authority.parse("example.com:001").getHost());
-        assertEquals(new Host(REGNAME, "example.com"), Authority.parse("%6A%6F%68%6E@example.com").getHost());
-        assertEquals(new Host(IPV4, "101.102.103.104"), Authority.parse("101.102.103.104").getHost());
-        assertEquals(new Host(IPV6, "[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]"), Authority.parse("[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]").getHost());
-        assertEquals(new Host(IPV6, "[2001:db8:0:1:1:1:1:1]"), Authority.parse("[2001:db8:0:1:1:1:1:1]").getHost());
-        assertEquals(new Host(IPV6, "[2001:0:9d38:6abd:0:0:0:42]"), Authority.parse("[2001:0:9d38:6abd:0:0:0:42]").getHost());
-        assertEquals(new Host(IPV6, "[fe80::1]"), Authority.parse("[fe80::1]").getHost());
-        assertEquals(new Host(IPV6, "[2001:0:3238:DFE1:63::FEFB]"), Authority.parse("[2001:0:3238:DFE1:63::FEFB]").getHost());
-        assertEquals(new Host(IPVFUTURE, "[v1.fe80::a+en1]"), Authority.parse("[v1.fe80::a+en1]").getHost());
-        assertEquals(new Host(REGNAME, "%65%78%61%6D%70%6C%65%2E%63%6F%6D"), Authority.parse("%65%78%61%6D%70%6C%65%2E%63%6F%6D").getHost());
-        assertEquals(new Host(REGNAME, ""), Authority.parse("").getHost());
+        assertThat(Authority.parse("example.com").getHost()).isEqualTo(new Host(REGNAME, "example.com"));
+        assertThat(Authority.parse("john@example.com:80").getHost()).isEqualTo(new Host(REGNAME, "example.com"));
+        assertThat(Authority.parse("example.com:001").getHost()).isEqualTo(new Host(REGNAME, "example.com"));
+        assertThat(Authority.parse("%6A%6F%68%6E@example.com").getHost()).isEqualTo(new Host(REGNAME, "example.com"));
+        assertThat(Authority.parse("101.102.103.104").getHost()).isEqualTo(new Host(IPV4, "101.102.103.104"));
+        assertThat(Authority.parse("[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]").getHost()).isEqualTo(new Host(IPV6, "[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]"));
+        assertThat(Authority.parse("[2001:db8:0:1:1:1:1:1]").getHost()).isEqualTo(new Host(IPV6, "[2001:db8:0:1:1:1:1:1]"));
+        assertThat(Authority.parse("[2001:0:9d38:6abd:0:0:0:42]").getHost()).isEqualTo(new Host(IPV6, "[2001:0:9d38:6abd:0:0:0:42]"));
+        assertThat(Authority.parse("[fe80::1]").getHost()).isEqualTo(new Host(IPV6, "[fe80::1]"));
+        assertThat(Authority.parse("[2001:0:3238:DFE1:63::FEFB]").getHost()).isEqualTo(new Host(IPV6, "[2001:0:3238:DFE1:63::FEFB]"));
+        assertThat(Authority.parse("[v1.fe80::a+en1]").getHost()).isEqualTo(new Host(IPVFUTURE, "[v1.fe80::a+en1]"));
+        assertThat(Authority.parse("%65%78%61%6D%70%6C%65%2E%63%6F%6D").getHost()).isEqualTo(new Host(REGNAME, "%65%78%61%6D%70%6C%65%2E%63%6F%6D"));
+        assertThat(Authority.parse("").getHost()).isEqualTo(new Host(REGNAME, ""));
     }
 
 
     @Test
-    public void test_getPort()
+    void get_port()
     {
-        assertEquals(-1, Authority.parse("example.com").getPort());
-        assertEquals(80, Authority.parse("john@example.com:80").getPort());
-        assertEquals(1, Authority.parse("example.com:001").getPort());
-        assertEquals(-1, Authority.parse("%6A%6F%68%6E@example.com").getPort());
-        assertEquals(-1, Authority.parse("101.102.103.104").getPort());
-        assertEquals(-1, Authority.parse("[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]").getPort());
-        assertEquals(-1, Authority.parse("[2001:db8:0:1:1:1:1:1]").getPort());
-        assertEquals(-1, Authority.parse("[2001:0:9d38:6abd:0:0:0:42]").getPort());
-        assertEquals(-1, Authority.parse("[fe80::1]").getPort());
-        assertEquals(-1, Authority.parse("[2001:0:3238:DFE1:63::FEFB]").getPort());
-        assertEquals(-1, Authority.parse("[v1.fe80::a+en1]").getPort());
-        assertEquals(-1, Authority.parse("%65%78%61%6D%70%6C%65%2E%63%6F%6D").getPort());
-        assertEquals(-1, Authority.parse("").getPort());
+        assertThat(Authority.parse("example.com").getPort()).isEqualTo(-1);
+        assertThat(Authority.parse("john@example.com:80").getPort()).isEqualTo(80);
+        assertThat(Authority.parse("example.com:001").getPort()).isEqualTo(1);
+        assertThat(Authority.parse("%6A%6F%68%6E@example.com").getPort()).isEqualTo(-1);
+        assertThat(Authority.parse("101.102.103.104").getPort()).isEqualTo(-1);
+        assertThat(Authority.parse("[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]").getPort()).isEqualTo(-1);
+        assertThat(Authority.parse("[2001:db8:0:1:1:1:1:1]").getPort()).isEqualTo(-1);
+        assertThat(Authority.parse("[2001:0:9d38:6abd:0:0:0:42]").getPort()).isEqualTo(-1);
+        assertThat(Authority.parse("[fe80::1]").getPort()).isEqualTo(-1);
+        assertThat(Authority.parse("[2001:0:3238:DFE1:63::FEFB]").getPort()).isEqualTo(-1);
+        assertThat(Authority.parse("[v1.fe80::a+en1]").getPort()).isEqualTo(-1);
+        assertThat(Authority.parse("%65%78%61%6D%70%6C%65%2E%63%6F%6D").getPort()).isEqualTo(-1);
+        assertThat(Authority.parse("").getPort()).isEqualTo(-1);
     }
 
 
     @Test
-    public void test_toString()
+    void to_string()
     {
-        assertEquals("example.com", Authority.parse("example.com").toString());
-        assertEquals("john@example.com:80", Authority.parse("john@example.com:80").toString());
-        assertEquals("example.com:1", Authority.parse("example.com:001").toString());
-        assertEquals("%6A%6F%68%6E@example.com", Authority.parse("%6A%6F%68%6E@example.com").toString());
-        assertEquals("101.102.103.104", Authority.parse("101.102.103.104").toString());
-        assertEquals("[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]", Authority.parse("[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]").toString());
-        assertEquals("[2001:db8:0:1:1:1:1:1]", Authority.parse("[2001:db8:0:1:1:1:1:1]").toString());
-        assertEquals("[2001:0:9d38:6abd:0:0:0:42]", Authority.parse("[2001:0:9d38:6abd:0:0:0:42]").toString());
-        assertEquals("[fe80::1]", Authority.parse("[fe80::1]").toString());
-        assertEquals("[2001:0:3238:DFE1:63::FEFB]", Authority.parse("[2001:0:3238:DFE1:63::FEFB]").toString());
-        assertEquals("[v1.fe80::a+en1]", Authority.parse("[v1.fe80::a+en1]").toString());
-        assertEquals("%65%78%61%6D%70%6C%65%2E%63%6F%6D", Authority.parse("%65%78%61%6D%70%6C%65%2E%63%6F%6D").toString());
-        assertEquals("", Authority.parse("").toString());
+        assertThat(Authority.parse("example.com").toString()).isEqualTo("example.com");
+        assertThat(Authority.parse("john@example.com:80").toString()).isEqualTo("john@example.com:80");
+        assertThat(Authority.parse("example.com:001").toString()).isEqualTo("example.com:1");
+        assertThat(Authority.parse("%6A%6F%68%6E@example.com").toString()).isEqualTo("%6A%6F%68%6E@example.com");
+        assertThat(Authority.parse("101.102.103.104").toString()).isEqualTo("101.102.103.104");
+        assertThat(Authority.parse("[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]").toString()).isEqualTo("[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]");
+        assertThat(Authority.parse("[2001:db8:0:1:1:1:1:1]").toString()).isEqualTo("[2001:db8:0:1:1:1:1:1]");
+        assertThat(Authority.parse("[2001:0:9d38:6abd:0:0:0:42]").toString()).isEqualTo("[2001:0:9d38:6abd:0:0:0:42]");
+        assertThat(Authority.parse("[fe80::1]").toString()).isEqualTo("[fe80::1]");
+        assertThat(Authority.parse("[2001:0:3238:DFE1:63::FEFB]").toString()).isEqualTo("[2001:0:3238:DFE1:63::FEFB]");
+        assertThat(Authority.parse("[v1.fe80::a+en1]").toString()).isEqualTo("[v1.fe80::a+en1]");
+        assertThat(Authority.parse("%65%78%61%6D%70%6C%65%2E%63%6F%6D").toString()).isEqualTo("%65%78%61%6D%70%6C%65%2E%63%6F%6D");
+        assertThat(Authority.parse("").toString()).isEqualTo("");
     }
 }

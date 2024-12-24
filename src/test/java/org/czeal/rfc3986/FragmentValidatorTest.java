@@ -21,10 +21,10 @@ import static org.czeal.rfc3986.TestUtils.assertThrowsIAE;
 import org.junit.jupiter.api.Test;
 
 
-public class FragmentValidatorTest
+class FragmentValidatorTest
 {
     @Test
-    public void test_validate()
+    void validate()
     {
         new FragmentValidator().validate("section1", UTF_8);
         new FragmentValidator().validate("fig%20A", UTF_8);
