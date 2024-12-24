@@ -33,7 +33,7 @@ public class URIReferenceTest
     @Test
     public void test_parse()
     {
-        URIReference uriRef1 = URIReference.parse("http://example.com");
+        var uriRef1 = URIReference.parse("http://example.com");
         assertEquals("http://example.com", uriRef1.toString());
         assertEquals(false, uriRef1.isRelativeReference());
         assertEquals("http", uriRef1.getScheme());
@@ -48,7 +48,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef1.getQuery());
         assertEquals(null, uriRef1.getFragment());
 
-        URIReference uriRef2 = URIReference.parse("hTTp://example.com");
+        var uriRef2 = URIReference.parse("hTTp://example.com");
         assertEquals("hTTp://example.com", uriRef2.toString());
         assertEquals(false, uriRef2.isRelativeReference());
         assertEquals("hTTp", uriRef2.getScheme());
@@ -63,7 +63,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef2.getQuery());
         assertEquals(null, uriRef2.getFragment());
 
-        URIReference uriRef3 = URIReference.parse("//example.com");
+        var uriRef3 = URIReference.parse("//example.com");
         assertEquals("//example.com", uriRef3.toString());
         assertEquals(true, uriRef3.isRelativeReference());
         assertEquals(null, uriRef3.getScheme());
@@ -78,7 +78,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef3.getQuery());
         assertEquals(null, uriRef3.getFragment());
 
-        URIReference uriRef4 = URIReference.parse("http:");
+        var uriRef4 = URIReference.parse("http:");
         assertEquals(false, uriRef4.isRelativeReference());
         assertEquals("http", uriRef4.getScheme());
         assertEquals(false, uriRef4.hasAuthority());
@@ -90,7 +90,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef4.getQuery());
         assertEquals(null, uriRef4.getFragment());
 
-        URIReference uriRef5 = URIReference.parse("http://john@example.com");
+        var uriRef5 = URIReference.parse("http://john@example.com");
         assertEquals("http://john@example.com", uriRef5.toString());
         assertEquals(false, uriRef5.isRelativeReference());
         assertEquals("http", uriRef5.getScheme());
@@ -105,7 +105,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef5.getQuery());
         assertEquals(null, uriRef5.getFragment());
 
-        URIReference uriRef6 = URIReference.parse("http://%6A%6F%68%6E@example.com");
+        var uriRef6 = URIReference.parse("http://%6A%6F%68%6E@example.com");
         assertEquals("http://%6A%6F%68%6E@example.com", uriRef6.toString());
         assertEquals(false, uriRef6.isRelativeReference());
         assertEquals("http", uriRef6.getScheme());
@@ -120,7 +120,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef6.getQuery());
         assertEquals(null, uriRef6.getFragment());
 
-        URIReference uriRef7 = URIReference.parse("http://101.102.103.104");
+        var uriRef7 = URIReference.parse("http://101.102.103.104");
         assertEquals("http://101.102.103.104", uriRef7.toString());
         assertEquals(false, uriRef7.isRelativeReference());
         assertEquals("http", uriRef7.getScheme());
@@ -135,7 +135,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef7.getQuery());
         assertEquals(null, uriRef7.getFragment());
 
-        URIReference uriRef8 = URIReference.parse("http://[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]");
+        var uriRef8 = URIReference.parse("http://[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]");
         assertEquals("http://[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]", uriRef8.toString());
         assertEquals(false, uriRef8.isRelativeReference());
         assertEquals("http", uriRef8.getScheme());
@@ -150,7 +150,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef8.getQuery());
         assertEquals(null, uriRef8.getFragment());
 
-        URIReference uriRef9 = URIReference.parse("http://[2001:db8:0:1:1:1:1:1]");
+        var uriRef9 = URIReference.parse("http://[2001:db8:0:1:1:1:1:1]");
         assertEquals("http://[2001:db8:0:1:1:1:1:1]", uriRef9.toString());
         assertEquals(false, uriRef9.isRelativeReference());
         assertEquals("http", uriRef9.getScheme());
@@ -165,7 +165,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef9.getQuery());
         assertEquals(null, uriRef9.getFragment());
 
-        URIReference uriRef10 = URIReference.parse("http://[2001:0:9d38:6abd:0:0:0:42]");
+        var uriRef10 = URIReference.parse("http://[2001:0:9d38:6abd:0:0:0:42]");
         assertEquals("http://[2001:0:9d38:6abd:0:0:0:42]", uriRef10.toString());
         assertEquals(false, uriRef10.isRelativeReference());
         assertEquals("http", uriRef10.getScheme());
@@ -180,7 +180,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef10.getQuery());
         assertEquals(null, uriRef10.getFragment());
 
-        URIReference uriRef11 = URIReference.parse("http://[fe80::1]");
+        var uriRef11 = URIReference.parse("http://[fe80::1]");
         assertEquals("http://[fe80::1]", uriRef11.toString());
         assertEquals(false, uriRef11.isRelativeReference());
         assertEquals("http", uriRef11.getScheme());
@@ -195,7 +195,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef11.getQuery());
         assertEquals(null, uriRef11.getFragment());
 
-        URIReference uriRef12 = URIReference.parse("http://[2001:0:3238:DFE1:63::FEFB]");
+        var uriRef12 = URIReference.parse("http://[2001:0:3238:DFE1:63::FEFB]");
         assertEquals("http://[2001:0:3238:DFE1:63::FEFB]", uriRef12.toString());
         assertEquals(false, uriRef12.isRelativeReference());
         assertEquals("http", uriRef12.getScheme());
@@ -210,7 +210,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef12.getQuery());
         assertEquals(null, uriRef12.getFragment());
 
-        URIReference uriRef13 = URIReference.parse("http://[v1.fe80::a+en1]");
+        var uriRef13 = URIReference.parse("http://[v1.fe80::a+en1]");
         assertEquals("http://[v1.fe80::a+en1]", uriRef13.toString());
         assertEquals(false, uriRef13.isRelativeReference());
         assertEquals("http", uriRef13.getScheme());
@@ -225,7 +225,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef13.getQuery());
         assertEquals(null, uriRef13.getFragment());
 
-        URIReference uriRef14 = URIReference.parse("http://%65%78%61%6D%70%6C%65%2E%63%6F%6D");
+        var uriRef14 = URIReference.parse("http://%65%78%61%6D%70%6C%65%2E%63%6F%6D");
         assertEquals("http://%65%78%61%6D%70%6C%65%2E%63%6F%6D", uriRef14.toString());
         assertEquals(false, uriRef14.isRelativeReference());
         assertEquals("http", uriRef14.getScheme());
@@ -240,7 +240,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef14.getQuery());
         assertEquals(null, uriRef14.getFragment());
 
-        URIReference uriRef15 = URIReference.parse("http://");
+        var uriRef15 = URIReference.parse("http://");
         assertEquals(false, uriRef15.isRelativeReference());
         assertEquals("http", uriRef15.getScheme());
         assertEquals(true, uriRef15.hasAuthority());
@@ -254,7 +254,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef15.getQuery());
         assertEquals(null, uriRef15.getFragment());
 
-        URIReference uriRef16 = URIReference.parse("http:///a");
+        var uriRef16 = URIReference.parse("http:///a");
         assertEquals(false, uriRef16.isRelativeReference());
         assertEquals("http", uriRef16.getScheme());
         assertEquals(true, uriRef16.hasAuthority());
@@ -268,7 +268,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef16.getQuery());
         assertEquals(null, uriRef16.getFragment());
 
-        URIReference uriRef17 = URIReference.parse("http://example.com:80");
+        var uriRef17 = URIReference.parse("http://example.com:80");
         assertEquals(false, uriRef17.isRelativeReference());
         assertEquals("http", uriRef17.getScheme());
         assertEquals(true, uriRef17.hasAuthority());
@@ -282,7 +282,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef17.getQuery());
         assertEquals(null, uriRef17.getFragment());
 
-        URIReference uriRef18 = URIReference.parse("http://example.com:");
+        var uriRef18 = URIReference.parse("http://example.com:");
         assertEquals(false, uriRef18.isRelativeReference());
         assertEquals("http", uriRef18.getScheme());
         assertEquals(true, uriRef18.hasAuthority());
@@ -296,7 +296,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef18.getQuery());
         assertEquals(null, uriRef18.getFragment());
 
-        URIReference uriRef19 = URIReference.parse("http://example.com:001");
+        var uriRef19 = URIReference.parse("http://example.com:001");
         assertEquals(false, uriRef19.isRelativeReference());
         assertEquals("http", uriRef19.getScheme());
         assertEquals(true, uriRef19.hasAuthority());
@@ -310,7 +310,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef19.getQuery());
         assertEquals(null, uriRef19.getFragment());
 
-        URIReference uriRef20 = URIReference.parse("http://example.com/a/b/c");
+        var uriRef20 = URIReference.parse("http://example.com/a/b/c");
         assertEquals("http://example.com/a/b/c", uriRef20.toString());
         assertEquals(false, uriRef20.isRelativeReference());
         assertEquals("http", uriRef20.getScheme());
@@ -325,7 +325,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef20.getQuery());
         assertEquals(null, uriRef20.getFragment());
 
-        URIReference uriRef21 = URIReference.parse("http://example.com/%61/%62/%63");
+        var uriRef21 = URIReference.parse("http://example.com/%61/%62/%63");
         assertEquals("http://example.com/%61/%62/%63", uriRef21.toString());
         assertEquals(false, uriRef21.isRelativeReference());
         assertEquals("http", uriRef21.getScheme());
@@ -340,7 +340,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef21.getQuery());
         assertEquals(null, uriRef21.getFragment());
 
-        URIReference uriRef22 = URIReference.parse("http:/a");
+        var uriRef22 = URIReference.parse("http:/a");
         assertEquals(false, uriRef22.isRelativeReference());
         assertEquals("http", uriRef22.getScheme());
         assertEquals(false, uriRef22.hasAuthority());
@@ -352,7 +352,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef22.getQuery());
         assertEquals(null, uriRef22.getFragment());
 
-        URIReference uriRef23 = URIReference.parse("http:a");
+        var uriRef23 = URIReference.parse("http:a");
         assertEquals(false, uriRef23.isRelativeReference());
         assertEquals("http", uriRef23.getScheme());
         assertEquals(false, uriRef23.hasAuthority());
@@ -364,7 +364,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef23.getQuery());
         assertEquals(null, uriRef23.getFragment());
 
-        URIReference uriRef24 = URIReference.parse("//");
+        var uriRef24 = URIReference.parse("//");
         assertEquals(true, uriRef24.isRelativeReference());
         assertEquals(null, uriRef24.getScheme());
         assertEquals(true, uriRef24.hasAuthority());
@@ -378,7 +378,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef24.getQuery());
         assertEquals(null, uriRef24.getFragment());
 
-        URIReference uriRef25 = URIReference.parse("http://example.com?q");
+        var uriRef25 = URIReference.parse("http://example.com?q");
         assertEquals(false, uriRef25.isRelativeReference());
         assertEquals("http", uriRef25.getScheme());
         assertEquals(true, uriRef25.hasAuthority());
@@ -392,7 +392,7 @@ public class URIReferenceTest
         assertEquals("q", uriRef25.getQuery());
         assertEquals(null, uriRef25.getFragment());
 
-        URIReference uriRef26 = URIReference.parse("http://example.com?");
+        var uriRef26 = URIReference.parse("http://example.com?");
         assertEquals(false, uriRef26.isRelativeReference());
         assertEquals("http", uriRef26.getScheme());
         assertEquals(true, uriRef26.hasAuthority());
@@ -406,7 +406,7 @@ public class URIReferenceTest
         assertEquals("", uriRef26.getQuery());
         assertEquals(null, uriRef26.getFragment());
 
-        URIReference uriRef27 = URIReference.parse("http://example.com#f");
+        var uriRef27 = URIReference.parse("http://example.com#f");
         assertEquals(false, uriRef27.isRelativeReference());
         assertEquals("http", uriRef27.getScheme());
         assertEquals(true, uriRef27.hasAuthority());
@@ -420,7 +420,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef27.getQuery());
         assertEquals("f", uriRef27.getFragment());
 
-        URIReference uriRef28 = URIReference.parse("http://example.com#");
+        var uriRef28 = URIReference.parse("http://example.com#");
         assertEquals(false, uriRef28.isRelativeReference());
         assertEquals("http", uriRef28.getScheme());
         assertEquals(true, uriRef28.hasAuthority());
@@ -434,7 +434,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef28.getQuery());
         assertEquals("", uriRef28.getFragment());
 
-        URIReference uriRef29 = URIReference.parse("");
+        var uriRef29 = URIReference.parse("");
         assertEquals(true, uriRef29.isRelativeReference());
         assertEquals(null, uriRef29.getScheme());
         assertEquals(false, uriRef29.hasAuthority());
@@ -864,7 +864,7 @@ public class URIReferenceTest
     @Test
     public void test_resolve()
     {
-        URIReference uriRef1 = URIReference.parse("http://a/b/c/d;p?q").resolve("g:h");
+        var uriRef1 = URIReference.parse("http://a/b/c/d;p?q").resolve("g:h");
         assertEquals("g:h", uriRef1.toString());
         assertEquals(false, uriRef1.isRelativeReference());
         assertEquals("g", uriRef1.getScheme());
@@ -877,7 +877,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef1.getQuery());
         assertEquals(null, uriRef1.getFragment());
 
-        URIReference uriRef2 = URIReference.parse("http://a/b/c/d;p?q").resolve("g");
+        var uriRef2 = URIReference.parse("http://a/b/c/d;p?q").resolve("g");
         assertEquals("http://a/b/c/g", uriRef2.toString());
         assertEquals(false, uriRef2.isRelativeReference());
         assertEquals("http", uriRef2.getScheme());
@@ -892,7 +892,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef2.getQuery());
         assertEquals(null, uriRef2.getFragment());
 
-        URIReference uriRef3 = URIReference.parse("http://a/b/c/d;p?q").resolve("./g");
+        var uriRef3 = URIReference.parse("http://a/b/c/d;p?q").resolve("./g");
         assertEquals("http://a/b/c/g", uriRef3.toString());
         assertEquals(false, uriRef3.isRelativeReference());
         assertEquals("http", uriRef3.getScheme());
@@ -907,7 +907,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef3.getQuery());
         assertEquals(null, uriRef3.getFragment());
 
-        URIReference uriRef4 = URIReference.parse("http://a/b/c/d;p?q").resolve("g/");
+        var uriRef4 = URIReference.parse("http://a/b/c/d;p?q").resolve("g/");
         assertEquals("http://a/b/c/g/", uriRef4.toString());
         assertEquals(false, uriRef4.isRelativeReference());
         assertEquals("http", uriRef4.getScheme());
@@ -922,7 +922,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef4.getQuery());
         assertEquals(null, uriRef4.getFragment());
 
-        URIReference uriRef5 = URIReference.parse("http://a/b/c/d;p?q").resolve("/g");
+        var uriRef5 = URIReference.parse("http://a/b/c/d;p?q").resolve("/g");
         assertEquals("http://a/g", uriRef5.toString());
         assertEquals(false, uriRef5.isRelativeReference());
         assertEquals("http", uriRef5.getScheme());
@@ -937,7 +937,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef5.getQuery());
         assertEquals(null, uriRef5.getFragment());
 
-        URIReference uriRef6 = URIReference.parse("http://a/b/c/d;p?q").resolve("//g");
+        var uriRef6 = URIReference.parse("http://a/b/c/d;p?q").resolve("//g");
         assertEquals("http://g", uriRef6.toString());
         assertEquals(false, uriRef6.isRelativeReference());
         assertEquals("http", uriRef6.getScheme());
@@ -952,7 +952,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef6.getQuery());
         assertEquals(null, uriRef6.getFragment());
 
-        URIReference uriRef7 = URIReference.parse("http://a/b/c/d;p?q").resolve("?y");
+        var uriRef7 = URIReference.parse("http://a/b/c/d;p?q").resolve("?y");
         assertEquals("http://a/b/c/d;p?y", uriRef7.toString());
         assertEquals(false, uriRef7.isRelativeReference());
         assertEquals("http", uriRef7.getScheme());
@@ -967,7 +967,7 @@ public class URIReferenceTest
         assertEquals("y", uriRef7.getQuery());
         assertEquals(null, uriRef7.getFragment());
 
-        URIReference uriRef8 = URIReference.parse("http://a/b/c/d;p?q").resolve("g?y");
+        var uriRef8 = URIReference.parse("http://a/b/c/d;p?q").resolve("g?y");
         assertEquals("http://a/b/c/g?y", uriRef8.toString());
         assertEquals(false, uriRef8.isRelativeReference());
         assertEquals("http", uriRef8.getScheme());
@@ -982,7 +982,7 @@ public class URIReferenceTest
         assertEquals("y", uriRef8.getQuery());
         assertEquals(null, uriRef8.getFragment());
 
-        URIReference uriRef9 = URIReference.parse("http://a/b/c/d;p?q").resolve("#s");
+        var uriRef9 = URIReference.parse("http://a/b/c/d;p?q").resolve("#s");
         assertEquals("http://a/b/c/d;p?q#s", uriRef9.toString());
         assertEquals(false, uriRef9.isRelativeReference());
         assertEquals("http", uriRef9.getScheme());
@@ -997,7 +997,7 @@ public class URIReferenceTest
         assertEquals("q", uriRef9.getQuery());
         assertEquals("s", uriRef9.getFragment());
 
-        URIReference uriRef10 = URIReference.parse("http://a/b/c/d;p?q").resolve("g#s");
+        var uriRef10 = URIReference.parse("http://a/b/c/d;p?q").resolve("g#s");
         assertEquals("http://a/b/c/g#s", uriRef10.toString());
         assertEquals(false, uriRef10.isRelativeReference());
         assertEquals("http", uriRef10.getScheme());
@@ -1012,7 +1012,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef10.getQuery());
         assertEquals("s", uriRef10.getFragment());
 
-        URIReference uriRef11 = URIReference.parse("http://a/b/c/d;p?q").resolve("g?y#s");
+        var uriRef11 = URIReference.parse("http://a/b/c/d;p?q").resolve("g?y#s");
         assertEquals("http://a/b/c/g?y#s", uriRef11.toString());
         assertEquals(false, uriRef11.isRelativeReference());
         assertEquals("http", uriRef11.getScheme());
@@ -1027,7 +1027,7 @@ public class URIReferenceTest
         assertEquals("y", uriRef11.getQuery());
         assertEquals("s", uriRef11.getFragment());
 
-        URIReference uriRef12 = URIReference.parse("http://a/b/c/d;p?q").resolve(";x");
+        var uriRef12 = URIReference.parse("http://a/b/c/d;p?q").resolve(";x");
         assertEquals("http://a/b/c/;x", uriRef12.toString());
         assertEquals(false, uriRef12.isRelativeReference());
         assertEquals("http", uriRef12.getScheme());
@@ -1042,7 +1042,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef12.getQuery());
         assertEquals(null, uriRef12.getFragment());
 
-        URIReference uriRef13 = URIReference.parse("http://a/b/c/d;p?q").resolve("g;x");
+        var uriRef13 = URIReference.parse("http://a/b/c/d;p?q").resolve("g;x");
         assertEquals("http://a/b/c/g;x", uriRef13.toString());
         assertEquals(false, uriRef13.isRelativeReference());
         assertEquals("http", uriRef13.getScheme());
@@ -1057,7 +1057,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef13.getQuery());
         assertEquals(null, uriRef13.getFragment());
 
-        URIReference uriRef14 = URIReference.parse("http://a/b/c/d;p?q").resolve("g;x?y#s");
+        var uriRef14 = URIReference.parse("http://a/b/c/d;p?q").resolve("g;x?y#s");
         assertEquals("http://a/b/c/g;x?y#s", uriRef14.toString());
         assertEquals(false, uriRef14.isRelativeReference());
         assertEquals("http", uriRef14.getScheme());
@@ -1072,7 +1072,7 @@ public class URIReferenceTest
         assertEquals("y", uriRef14.getQuery());
         assertEquals("s", uriRef14.getFragment());
 
-        URIReference uriRef15 = URIReference.parse("http://a/b/c/d;p?q").resolve("");
+        var uriRef15 = URIReference.parse("http://a/b/c/d;p?q").resolve("");
         assertEquals("http://a/b/c/d;p?q", uriRef15.toString());
         assertEquals(false, uriRef15.isRelativeReference());
         assertEquals("http", uriRef15.getScheme());
@@ -1087,7 +1087,7 @@ public class URIReferenceTest
         assertEquals("q", uriRef15.getQuery());
         assertEquals(null, uriRef15.getFragment());
 
-        URIReference uriRef16 = URIReference.parse("http://a/b/c/d;p?q").resolve(".");
+        var uriRef16 = URIReference.parse("http://a/b/c/d;p?q").resolve(".");
         assertEquals("http://a/b/c/", uriRef16.toString());
         assertEquals(false, uriRef16.isRelativeReference());
         assertEquals("http", uriRef16.getScheme());
@@ -1102,7 +1102,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef16.getQuery());
         assertEquals(null, uriRef16.getFragment());
 
-        URIReference uriRef17 = URIReference.parse("http://a/b/c/d;p?q").resolve("./");
+        var uriRef17 = URIReference.parse("http://a/b/c/d;p?q").resolve("./");
         assertEquals("http://a/b/c/", uriRef17.toString());
         assertEquals(false, uriRef17.isRelativeReference());
         assertEquals("http", uriRef17.getScheme());
@@ -1117,7 +1117,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef17.getQuery());
         assertEquals(null, uriRef17.getFragment());
 
-        URIReference uriRef18 = URIReference.parse("http://a/b/c/d;p?q").resolve("..");
+        var uriRef18 = URIReference.parse("http://a/b/c/d;p?q").resolve("..");
         assertEquals("http://a/b/", uriRef18.toString());
         assertEquals(false, uriRef18.isRelativeReference());
         assertEquals("http", uriRef18.getScheme());
@@ -1132,7 +1132,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef18.getQuery());
         assertEquals(null, uriRef18.getFragment());
 
-        URIReference uriRef19 = URIReference.parse("http://a/b/c/d;p?q").resolve("../");
+        var uriRef19 = URIReference.parse("http://a/b/c/d;p?q").resolve("../");
         assertEquals("http://a/b/", uriRef19.toString());
         assertEquals(false, uriRef19.isRelativeReference());
         assertEquals("http", uriRef19.getScheme());
@@ -1147,7 +1147,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef19.getQuery());
         assertEquals(null, uriRef19.getFragment());
 
-        URIReference uriRef20 = URIReference.parse("http://a/b/c/d;p?q").resolve("../g");
+        var uriRef20 = URIReference.parse("http://a/b/c/d;p?q").resolve("../g");
         assertEquals("http://a/b/g", uriRef20.toString());
         assertEquals(false, uriRef20.isRelativeReference());
         assertEquals("http", uriRef20.getScheme());
@@ -1162,7 +1162,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef20.getQuery());
         assertEquals(null, uriRef20.getFragment());
 
-        URIReference uriRef21 = URIReference.parse("http://a/b/c/d;p?q").resolve("../..");
+        var uriRef21 = URIReference.parse("http://a/b/c/d;p?q").resolve("../..");
         assertEquals("http://a/", uriRef21.toString());
         assertEquals(false, uriRef21.isRelativeReference());
         assertEquals("http", uriRef21.getScheme());
@@ -1177,7 +1177,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef21.getQuery());
         assertEquals(null, uriRef21.getFragment());
 
-        URIReference uriRef22 = URIReference.parse("http://a/b/c/d;p?q").resolve("../../");
+        var uriRef22 = URIReference.parse("http://a/b/c/d;p?q").resolve("../../");
         assertEquals("http://a/", uriRef22.toString());
         assertEquals(false, uriRef22.isRelativeReference());
         assertEquals("http", uriRef22.getScheme());
@@ -1192,7 +1192,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef22.getQuery());
         assertEquals(null, uriRef22.getFragment());
 
-        URIReference uriRef23 = URIReference.parse("http://a/b/c/d;p?q").resolve("../../g");
+        var uriRef23 = URIReference.parse("http://a/b/c/d;p?q").resolve("../../g");
         assertEquals("http://a/g", uriRef23.toString());
         assertEquals(false, uriRef23.isRelativeReference());
         assertEquals("http", uriRef23.getScheme());
@@ -1207,7 +1207,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef23.getQuery());
         assertEquals(null, uriRef23.getFragment());
 
-        URIReference uriRef24 = URIReference.parse("http://a/b/c/d;p?q").resolve("g?y/./x");
+        var uriRef24 = URIReference.parse("http://a/b/c/d;p?q").resolve("g?y/./x");
         assertEquals("http://a/b/c/g?y/./x", uriRef24.toString());
         assertEquals(false, uriRef24.isRelativeReference());
         assertEquals("http", uriRef24.getScheme());
@@ -1222,7 +1222,7 @@ public class URIReferenceTest
         assertEquals("y/./x", uriRef24.getQuery());
         assertEquals(null, uriRef24.getFragment());
 
-        URIReference uriRef25 = URIReference.parse("http://a/b/c/d;p?q").resolve("g?y/../x");
+        var uriRef25 = URIReference.parse("http://a/b/c/d;p?q").resolve("g?y/../x");
         assertEquals("http://a/b/c/g?y/../x", uriRef25.toString());
         assertEquals(false, uriRef25.isRelativeReference());
         assertEquals("http", uriRef25.getScheme());
@@ -1237,7 +1237,7 @@ public class URIReferenceTest
         assertEquals("y/../x", uriRef25.getQuery());
         assertEquals(null, uriRef25.getFragment());
 
-        URIReference uriRef26 = URIReference.parse("http://a/b/c/d;p?q").resolve("g#s/./x");
+        var uriRef26 = URIReference.parse("http://a/b/c/d;p?q").resolve("g#s/./x");
         assertEquals("http://a/b/c/g#s/./x", uriRef26.toString());
         assertEquals(false, uriRef26.isRelativeReference());
         assertEquals("http", uriRef26.getScheme());
@@ -1252,7 +1252,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef26.getQuery());
         assertEquals("s/./x", uriRef26.getFragment());
 
-        URIReference uriRef27 = URIReference.parse("http://a/b/c/d;p?q").resolve("g#s/../x");
+        var uriRef27 = URIReference.parse("http://a/b/c/d;p?q").resolve("g#s/../x");
         assertEquals("http://a/b/c/g#s/../x", uriRef27.toString());
         assertEquals(false, uriRef27.isRelativeReference());
         assertEquals("http", uriRef27.getScheme());
@@ -1284,7 +1284,7 @@ public class URIReferenceTest
     @Test
     public void test_normalize()
     {
-        URIReference uriRef1 = URIReference.parse("hTTp://example.com/").normalize();
+        var uriRef1 = URIReference.parse("hTTp://example.com/").normalize();
         assertEquals("http://example.com/", uriRef1.toString());
         assertEquals(false, uriRef1.isRelativeReference());
         assertEquals("http", uriRef1.getScheme());
@@ -1299,7 +1299,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef1.getQuery());
         assertEquals(null, uriRef1.getFragment());
 
-        URIReference uriRef2 = URIReference.parse("http://example.com/").normalize();
+        var uriRef2 = URIReference.parse("http://example.com/").normalize();
         assertEquals(true, uriRef2.hasAuthority());
         assertEquals("example.com", uriRef2.getAuthority().toString());
         assertEquals(null, uriRef2.getUserinfo());
@@ -1310,7 +1310,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef2.getQuery());
         assertEquals(null, uriRef2.getFragment());
 
-        URIReference uriRef3 = URIReference.parse("http://%75ser@example.com/").normalize();
+        var uriRef3 = URIReference.parse("http://%75ser@example.com/").normalize();
         assertEquals("http://user@example.com/", uriRef3.toString());
         assertEquals(false, uriRef3.isRelativeReference());
         assertEquals("http", uriRef3.getScheme());
@@ -1325,7 +1325,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef3.getQuery());
         assertEquals(null, uriRef3.getFragment());
 
-        URIReference uriRef4 = URIReference.parse("http://%e3%83%a6%e3%83%bc%e3%82%b6%e3%83%bc@example.com/").normalize();
+        var uriRef4 = URIReference.parse("http://%e3%83%a6%e3%83%bc%e3%82%b6%e3%83%bc@example.com/").normalize();
         assertEquals("http://%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC@example.com/", uriRef4.toString());
         assertEquals(false, uriRef4.isRelativeReference());
         assertEquals("http", uriRef4.getScheme());
@@ -1340,7 +1340,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef4.getQuery());
         assertEquals(null, uriRef4.getFragment());
 
-        URIReference uriRef5 = URIReference.parse("http://%65%78%61%6D%70%6C%65.com/").normalize();
+        var uriRef5 = URIReference.parse("http://%65%78%61%6D%70%6C%65.com/").normalize();
         assertEquals("http://example.com/", uriRef5.toString());
         assertEquals(false, uriRef5.isRelativeReference());
         assertEquals("http", uriRef5.getScheme());
@@ -1355,7 +1355,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef5.getQuery());
         assertEquals(null, uriRef5.getFragment());
 
-        URIReference uriRef6 = URIReference.parse("http://%e4%be%8b.com/").normalize();
+        var uriRef6 = URIReference.parse("http://%e4%be%8b.com/").normalize();
         assertEquals("http://%E4%BE%8B.com/", uriRef6.toString());
         assertEquals(false, uriRef6.isRelativeReference());
         assertEquals("http", uriRef6.getScheme());
@@ -1370,7 +1370,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef6.getQuery());
         assertEquals(null, uriRef6.getFragment());
 
-        URIReference uriRef7 = URIReference.parse("http://LOCALhost/").normalize();
+        var uriRef7 = URIReference.parse("http://LOCALhost/").normalize();
         assertEquals("http://localhost/", uriRef7.toString());
         assertEquals(false, uriRef7.isRelativeReference());
         assertEquals("http", uriRef7.getScheme());
@@ -1385,7 +1385,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef7.getQuery());
         assertEquals(null, uriRef7.getFragment());
 
-        URIReference uriRef8 = URIReference.parse("http://example.com").normalize();
+        var uriRef8 = URIReference.parse("http://example.com").normalize();
         assertEquals("http://example.com/", uriRef8.toString());
         assertEquals(false, uriRef8.isRelativeReference());
         assertEquals("http", uriRef8.getScheme());
@@ -1400,7 +1400,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef8.getQuery());
         assertEquals(null, uriRef8.getFragment());
 
-        URIReference uriRef9 = URIReference.parse("http://example.com/%61/%62/%63/").normalize();
+        var uriRef9 = URIReference.parse("http://example.com/%61/%62/%63/").normalize();
         assertEquals("http://example.com/a/b/c/", uriRef9.toString());
         assertEquals(false, uriRef9.isRelativeReference());
         assertEquals("http", uriRef9.getScheme());
@@ -1415,7 +1415,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef9.getQuery());
         assertEquals(null, uriRef9.getFragment());
 
-        URIReference uriRef10 = URIReference.parse("http://example.com/%e3%83%91%e3%82%b9/").normalize();
+        var uriRef10 = URIReference.parse("http://example.com/%e3%83%91%e3%82%b9/").normalize();
         assertEquals("http://example.com/%E3%83%91%E3%82%B9/", uriRef10.toString());
         assertEquals(false, uriRef10.isRelativeReference());
         assertEquals("http", uriRef10.getScheme());
@@ -1430,7 +1430,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef10.getQuery());
         assertEquals(null, uriRef10.getFragment());
 
-        URIReference uriRef11 = URIReference.parse("http://example.com/a/b/c/../d/").normalize();
+        var uriRef11 = URIReference.parse("http://example.com/a/b/c/../d/").normalize();
         assertEquals("http://example.com/a/b/d/", uriRef11.toString());
         assertEquals(false, uriRef11.isRelativeReference());
         assertEquals("http", uriRef11.getScheme());
@@ -1445,7 +1445,7 @@ public class URIReferenceTest
         assertEquals(null, uriRef11.getQuery());
         assertEquals(null, uriRef11.getFragment());
 
-        URIReference uriRef12 = URIReference.parse("http://example.com:80/").normalize();
+        var uriRef12 = URIReference.parse("http://example.com:80/").normalize();
         assertEquals("http://example.com/", uriRef12.toString());
         assertEquals(false, uriRef12.isRelativeReference());
         assertEquals("http", uriRef12.getScheme());

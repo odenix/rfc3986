@@ -31,7 +31,7 @@ public class AuthorityBuilderTest
     @Test
     public void test_build()
     {
-        Authority authority1 = new AuthorityBuilder()
+        var authority1 = new AuthorityBuilder()
             .setCharset(UTF_8).setUserinfo("john").setHost("example.com").setPort(80).build();
         assertEquals("john", authority1.getUserinfo());
         assertEquals(REGNAME, authority1.getHost().getType());
@@ -39,7 +39,7 @@ public class AuthorityBuilderTest
         assertEquals(80, authority1.getPort());
         assertEquals("john@example.com:80", authority1.toString());
 
-        Authority authority2 = new AuthorityBuilder()
+        var authority2 = new AuthorityBuilder()
             .setCharset(UTF_8).setHost("example.com").setPort(80).build();
         assertEquals(null, authority2.getUserinfo());
         assertEquals(REGNAME, authority2.getHost().getType());
@@ -47,7 +47,7 @@ public class AuthorityBuilderTest
         assertEquals(80, authority2.getPort());
         assertEquals("example.com:80", authority2.toString());
 
-        Authority authority3 = new AuthorityBuilder()
+        var authority3 = new AuthorityBuilder()
             .setCharset(UTF_8).setPort(80).build();
         assertEquals(null, authority3.getUserinfo());
         assertEquals(REGNAME, authority3.getHost().getType());
@@ -55,7 +55,7 @@ public class AuthorityBuilderTest
         assertEquals(80, authority3.getPort());
         assertEquals(":80", authority3.toString());
 
-        Authority authority4 = new AuthorityBuilder()
+        var authority4 = new AuthorityBuilder()
             .setCharset(UTF_8).build();
         assertEquals(null, authority4.getUserinfo());
         assertEquals(REGNAME, authority3.getHost().getType());
@@ -63,7 +63,7 @@ public class AuthorityBuilderTest
         assertEquals(-1, authority4.getPort());
         assertEquals("", authority4.toString());
 
-        Authority authority5 = new AuthorityBuilder()
+        var authority5 = new AuthorityBuilder()
             .setCharset(UTF_8).setUserinfo("john").setHost("101.102.103.104").setPort(80).build();
         assertEquals("john", authority5.getUserinfo());
         assertEquals(IPV4, authority5.getHost().getType());
@@ -71,7 +71,7 @@ public class AuthorityBuilderTest
         assertEquals(80, authority5.getPort());
         assertEquals("john@101.102.103.104:80", authority5.toString());
 
-        Authority authority6 = new AuthorityBuilder()
+        var authority6 = new AuthorityBuilder()
             .setCharset(UTF_8).setUserinfo("john").setHost("101.102.103.104").setPort(80).build();
         assertEquals("john", authority6.getUserinfo());
         assertEquals(IPV4, authority6.getHost().getType());
@@ -79,7 +79,7 @@ public class AuthorityBuilderTest
         assertEquals(80, authority6.getPort());
         assertEquals("john@101.102.103.104:80", authority6.toString());
 
-        Authority authority7 = new AuthorityBuilder()
+        var authority7 = new AuthorityBuilder()
             .setCharset(UTF_8).setUserinfo("john").setHost("[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]").setPort(80).build();
         assertEquals("john", authority7.getUserinfo());
         assertEquals(IPV6, authority7.getHost().getType());
@@ -87,7 +87,7 @@ public class AuthorityBuilderTest
         assertEquals(80, authority7.getPort());
         assertEquals("john@[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]:80", authority7.toString());
 
-        Authority authority8 = new AuthorityBuilder()
+        var authority8 = new AuthorityBuilder()
             .setCharset(UTF_8).setUserinfo("john").setHost("[v1.fe80::a+en1]").setPort(80).build();
         assertEquals("john", authority8.getUserinfo());
         assertEquals(IPVFUTURE, authority8.getHost().getType());

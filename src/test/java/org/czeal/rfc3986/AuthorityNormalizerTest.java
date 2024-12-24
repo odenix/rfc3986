@@ -27,7 +27,7 @@ public class AuthorityNormalizerTest
     @Test
     public void test_normalize()
     {
-        Authority normalized1 = new AuthorityNormalizer().normalize(
+        var normalized1 = new AuthorityNormalizer().normalize(
             Authority.parse("userinfoABC@EXAMPLE.com:80"), UTF_8, "http");
         assertEquals("userinfoABC", normalized1.getUserinfo());
         assertEquals(REGNAME, normalized1.getHost().getType());
@@ -35,7 +35,7 @@ public class AuthorityNormalizerTest
         assertEquals(-1, normalized1.getPort());
         assertEquals("userinfoABC@example.com", normalized1.toString());
 
-        Authority normalized2 = new AuthorityNormalizer().normalize(
+        var normalized2 = new AuthorityNormalizer().normalize(
             Authority.parse("userinfoABC@EXAMPLE.com:443"), UTF_8, "https");
         assertEquals("userinfoABC", normalized2.getUserinfo());
         assertEquals(REGNAME, normalized2.getHost().getType());
@@ -43,7 +43,7 @@ public class AuthorityNormalizerTest
         assertEquals(-1, normalized2.getPort());
         assertEquals("userinfoABC@example.com", normalized2.toString());
 
-        Authority normalized3 = new AuthorityNormalizer().normalize(null, UTF_8, "http");
+        var normalized3 = new AuthorityNormalizer().normalize(null, UTF_8, "http");
         assertEquals(null, normalized3);
     }
 }
