@@ -23,27 +23,27 @@ import org.junit.jupiter.api.function.Executable;
 
 public class TestUtils
 {
-    public static <T extends Throwable> void assertThrowsNPE(Executable executable)
+    public static void assertThrowsNPE(Executable executable)
     {
         assertThrowsNPE(null, executable);
     }
 
 
-    public static <T extends Throwable> void assertThrowsNPE(
+    public static void assertThrowsNPE(
         String message, Executable executable)
     {
         assertThrowsException(NullPointerException.class, message, executable);
     }
 
 
-    public static <T extends Throwable> void assertThrowsIAE(
+    public static void assertThrowsIAE(
         String message, Executable executable)
     {
         assertThrowsException(IllegalArgumentException.class, message, executable);
     }
 
 
-    public static <T extends Throwable> void assertThrowsISE(
+    public static void assertThrowsISE(
         String message, Executable executable)
     {
         assertThrowsException(IllegalStateException.class, message, executable);

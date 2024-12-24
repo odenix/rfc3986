@@ -461,7 +461,7 @@ class URIReferenceResolverTest
         assertThrowsNPE(
             "The input string must not be null.",
             () -> new URIReferenceResolver().resolve(
-                URIReference.parse((String)null, UTF_8), URIReference.parse("http://a/b/c/d;p?q", UTF_8)));
+                URIReference.parse(null, UTF_8), URIReference.parse("http://a/b/c/d;p?q", UTF_8)));
 
         assertThrowsISE(
             "The base URI must have a scheme.",

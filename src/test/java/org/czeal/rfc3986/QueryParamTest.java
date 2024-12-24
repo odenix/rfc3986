@@ -33,6 +33,7 @@ class QueryParamTest
         assertDoesNotThrow(() -> QueryParam.parse("k"));
         assertDoesNotThrow(() -> QueryParam.parse(""));
         assertDoesNotThrow(() -> QueryParam.parse("k=v=v"));
+        //noinspection DataFlowIssue
         assertThrowsNPE("The input string must not be null.", () -> QueryParam.parse(null));
     }
 
@@ -67,8 +68,8 @@ class QueryParamTest
         assertThat(QueryParam.parse("k=v").getValue()).isEqualTo("v");
         assertThat(QueryParam.parse("k=").getValue()).isEqualTo("");
         assertThat(QueryParam.parse("=v").getValue()).isEqualTo("v");
-        assertThat(QueryParam.parse("k").getValue()).isEqualTo((String)null);
-        assertThat(QueryParam.parse("").getValue()).isEqualTo((String)null);
+        assertThat(QueryParam.parse("k").getValue()).isNull();
+        assertThat(QueryParam.parse("").getValue()).isNull();
         assertThat(QueryParam.parse("k=v=v").getValue()).isEqualTo("v=v");
     }
 }

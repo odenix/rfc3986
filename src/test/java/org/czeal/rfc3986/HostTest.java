@@ -83,6 +83,6 @@ class HostTest
         assertThat(Host.parse("[v1.fe80::a+en1]").getValue()).isEqualTo("[v1.fe80::a+en1]");
         assertThat(Host.parse("%65%78%61%6D%70%6C%65%2E%63%6F%6D").getValue()).isEqualTo("%65%78%61%6D%70%6C%65%2E%63%6F%6D");
         assertThat(Host.parse("").getValue()).isEqualTo("");
-        assertThat(Host.parse(null).getValue()).isEqualTo((String)null);
+        assertThat(Host.parse(null).getValue()).isNull();
     }
 }

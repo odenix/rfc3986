@@ -30,6 +30,6 @@ class FragmentNormalizerTest
         assertThat(new FragmentNormalizer().normalize("FRAGMENT", UTF_8)).isEqualTo("FRAGMENT");
         assertThat(new FragmentNormalizer().normalize("fragmen%74", UTF_8)).isEqualTo("fragment");
         assertThat(new FragmentNormalizer().normalize("", UTF_8)).isEqualTo("");
-        assertThat(new FragmentNormalizer().normalize(null, UTF_8)).isEqualTo((String)null);
+        assertThat(new FragmentNormalizer().normalize(null, UTF_8)).isNull();
     }
 }

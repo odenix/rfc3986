@@ -29,6 +29,6 @@ class QueryNormalizerTest
         assertThat(new QueryNormalizer().normalize("k1=v1&k2=v2", UTF_8)).isEqualTo("k1=v1&k2=v2");
         assertThat(new QueryNormalizer().normalize("K1=V1&K2=V2", UTF_8)).isEqualTo("K1=V1&K2=V2");
         assertThat(new QueryNormalizer().normalize("", UTF_8)).isEqualTo("");
-        assertThat(new QueryNormalizer().normalize(null, UTF_8)).isEqualTo((String)null);
+        assertThat(new QueryNormalizer().normalize(null, UTF_8)).isNull();
     }
 }

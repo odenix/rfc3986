@@ -46,7 +46,7 @@ class URIReferenceParserTest
         assertThat(uriRef1.getQuery()).isNull();
         assertThat(uriRef1.getFragment()).isNull();
 
-        var uriRef2 = new URIReferenceParser().parse("hTTp://example.com", UTF_8);;
+        var uriRef2 = new URIReferenceParser().parse("hTTp://example.com", UTF_8);
         assertThat(uriRef2.toString()).isEqualTo("hTTp://example.com");
         assertThat(uriRef2.isRelativeReference()).isFalse();
         assertThat(uriRef2.getScheme()).isEqualTo("hTTp");
@@ -61,7 +61,7 @@ class URIReferenceParserTest
         assertThat(uriRef2.getQuery()).isNull();
         assertThat(uriRef2.getFragment()).isNull();
 
-        var uriRef3 = new URIReferenceParser().parse("//example.com", UTF_8);;
+        var uriRef3 = new URIReferenceParser().parse("//example.com", UTF_8);
         assertThat(uriRef3.toString()).isEqualTo("//example.com");
         assertThat(uriRef3.isRelativeReference()).isTrue();
         assertThat(uriRef3.getScheme()).isNull();
@@ -76,7 +76,7 @@ class URIReferenceParserTest
         assertThat(uriRef3.getQuery()).isNull();
         assertThat(uriRef3.getFragment()).isNull();
 
-        var uriRef4 = new URIReferenceParser().parse("http:", UTF_8);;
+        var uriRef4 = new URIReferenceParser().parse("http:", UTF_8);
         assertThat(uriRef4.isRelativeReference()).isFalse();
         assertThat(uriRef4.getScheme()).isEqualTo("http");
         assertThat(uriRef4.hasAuthority()).isFalse();
@@ -88,7 +88,7 @@ class URIReferenceParserTest
         assertThat(uriRef4.getQuery()).isNull();
         assertThat(uriRef4.getFragment()).isNull();
 
-        var uriRef5 = new URIReferenceParser().parse("http://john@example.com", UTF_8);;
+        var uriRef5 = new URIReferenceParser().parse("http://john@example.com", UTF_8);
         assertThat(uriRef5.toString()).isEqualTo("http://john@example.com");
         assertThat(uriRef5.isRelativeReference()).isFalse();
         assertThat(uriRef5.getScheme()).isEqualTo("http");
@@ -103,7 +103,7 @@ class URIReferenceParserTest
         assertThat(uriRef5.getQuery()).isNull();
         assertThat(uriRef5.getFragment()).isNull();
 
-        var uriRef6 = new URIReferenceParser().parse("http://%6A%6F%68%6E@example.com", UTF_8);;
+        var uriRef6 = new URIReferenceParser().parse("http://%6A%6F%68%6E@example.com", UTF_8);
         assertThat(uriRef6.toString()).isEqualTo("http://%6A%6F%68%6E@example.com");
         assertThat(uriRef6.isRelativeReference()).isFalse();
         assertThat(uriRef6.getScheme()).isEqualTo("http");
@@ -118,7 +118,7 @@ class URIReferenceParserTest
         assertThat(uriRef6.getQuery()).isNull();
         assertThat(uriRef6.getFragment()).isNull();
 
-        var uriRef7 = new URIReferenceParser().parse("http://101.102.103.104", UTF_8);;
+        var uriRef7 = new URIReferenceParser().parse("http://101.102.103.104", UTF_8);
         assertThat(uriRef7.toString()).isEqualTo("http://101.102.103.104");
         assertThat(uriRef7.isRelativeReference()).isFalse();
         assertThat(uriRef7.getScheme()).isEqualTo("http");
@@ -133,7 +133,7 @@ class URIReferenceParserTest
         assertThat(uriRef7.getQuery()).isNull();
         assertThat(uriRef7.getFragment()).isNull();
 
-        var uriRef8 = new URIReferenceParser().parse("http://[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]", UTF_8);;
+        var uriRef8 = new URIReferenceParser().parse("http://[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]", UTF_8);
         assertThat(uriRef8.toString()).isEqualTo("http://[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]");
         assertThat(uriRef8.isRelativeReference()).isFalse();
         assertThat(uriRef8.getScheme()).isEqualTo("http");
@@ -148,7 +148,7 @@ class URIReferenceParserTest
         assertThat(uriRef8.getQuery()).isNull();
         assertThat(uriRef8.getFragment()).isNull();
 
-        var uriRef9 = new URIReferenceParser().parse("http://[2001:db8:0:1:1:1:1:1]", UTF_8);;
+        var uriRef9 = new URIReferenceParser().parse("http://[2001:db8:0:1:1:1:1:1]", UTF_8);
         assertThat(uriRef9.toString()).isEqualTo("http://[2001:db8:0:1:1:1:1:1]");
         assertThat(uriRef9.isRelativeReference()).isFalse();
         assertThat(uriRef9.getScheme()).isEqualTo("http");
@@ -163,7 +163,7 @@ class URIReferenceParserTest
         assertThat(uriRef9.getQuery()).isNull();
         assertThat(uriRef9.getFragment()).isNull();
 
-        var uriRef10 = new URIReferenceParser().parse("http://[2001:0:9d38:6abd:0:0:0:42]", UTF_8);;
+        var uriRef10 = new URIReferenceParser().parse("http://[2001:0:9d38:6abd:0:0:0:42]", UTF_8);
         assertThat(uriRef10.toString()).isEqualTo("http://[2001:0:9d38:6abd:0:0:0:42]");
         assertThat(uriRef10.isRelativeReference()).isFalse();
         assertThat(uriRef10.getScheme()).isEqualTo("http");
@@ -178,7 +178,7 @@ class URIReferenceParserTest
         assertThat(uriRef10.getQuery()).isNull();
         assertThat(uriRef10.getFragment()).isNull();
 
-        var uriRef11 = new URIReferenceParser().parse("http://[fe80::1]", UTF_8);;
+        var uriRef11 = new URIReferenceParser().parse("http://[fe80::1]", UTF_8);
         assertThat(uriRef11.toString()).isEqualTo("http://[fe80::1]");
         assertThat(uriRef11.isRelativeReference()).isFalse();
         assertThat(uriRef11.getScheme()).isEqualTo("http");
@@ -193,7 +193,7 @@ class URIReferenceParserTest
         assertThat(uriRef11.getQuery()).isNull();
         assertThat(uriRef11.getFragment()).isNull();
 
-        var uriRef12 = new URIReferenceParser().parse("http://[2001:0:3238:DFE1:63::FEFB]", UTF_8);;
+        var uriRef12 = new URIReferenceParser().parse("http://[2001:0:3238:DFE1:63::FEFB]", UTF_8);
         assertThat(uriRef12.toString()).isEqualTo("http://[2001:0:3238:DFE1:63::FEFB]");
         assertThat(uriRef12.isRelativeReference()).isFalse();
         assertThat(uriRef12.getScheme()).isEqualTo("http");
@@ -208,7 +208,7 @@ class URIReferenceParserTest
         assertThat(uriRef12.getQuery()).isNull();
         assertThat(uriRef12.getFragment()).isNull();
 
-        var uriRef13 = new URIReferenceParser().parse("http://[v1.fe80::a+en1]", UTF_8);;
+        var uriRef13 = new URIReferenceParser().parse("http://[v1.fe80::a+en1]", UTF_8);
         assertThat(uriRef13.toString()).isEqualTo("http://[v1.fe80::a+en1]");
         assertThat(uriRef13.isRelativeReference()).isFalse();
         assertThat(uriRef13.getScheme()).isEqualTo("http");
@@ -223,7 +223,7 @@ class URIReferenceParserTest
         assertThat(uriRef13.getQuery()).isNull();
         assertThat(uriRef13.getFragment()).isNull();
 
-        var uriRef14 = new URIReferenceParser().parse("http://%65%78%61%6D%70%6C%65%2E%63%6F%6D", UTF_8);;
+        var uriRef14 = new URIReferenceParser().parse("http://%65%78%61%6D%70%6C%65%2E%63%6F%6D", UTF_8);
         assertThat(uriRef14.toString()).isEqualTo("http://%65%78%61%6D%70%6C%65%2E%63%6F%6D");
         assertThat(uriRef14.isRelativeReference()).isFalse();
         assertThat(uriRef14.getScheme()).isEqualTo("http");
@@ -238,7 +238,7 @@ class URIReferenceParserTest
         assertThat(uriRef14.getQuery()).isNull();
         assertThat(uriRef14.getFragment()).isNull();
 
-        var uriRef15 = new URIReferenceParser().parse("http://", UTF_8);;
+        var uriRef15 = new URIReferenceParser().parse("http://", UTF_8);
         assertThat(uriRef15.isRelativeReference()).isFalse();
         assertThat(uriRef15.getScheme()).isEqualTo("http");
         assertThat(uriRef15.hasAuthority()).isTrue();
@@ -252,7 +252,7 @@ class URIReferenceParserTest
         assertThat(uriRef15.getQuery()).isNull();
         assertThat(uriRef15.getFragment()).isNull();
 
-        var uriRef16 = new URIReferenceParser().parse("http:///a", UTF_8);;
+        var uriRef16 = new URIReferenceParser().parse("http:///a", UTF_8);
         assertThat(uriRef16.isRelativeReference()).isFalse();
         assertThat(uriRef16.getScheme()).isEqualTo("http");
         assertThat(uriRef16.hasAuthority()).isTrue();
@@ -266,7 +266,7 @@ class URIReferenceParserTest
         assertThat(uriRef16.getQuery()).isNull();
         assertThat(uriRef16.getFragment()).isNull();
 
-        var uriRef17 = new URIReferenceParser().parse("http://example.com:80", UTF_8);;
+        var uriRef17 = new URIReferenceParser().parse("http://example.com:80", UTF_8);
         assertThat(uriRef17.isRelativeReference()).isFalse();
         assertThat(uriRef17.getScheme()).isEqualTo("http");
         assertThat(uriRef17.hasAuthority()).isTrue();
@@ -280,7 +280,7 @@ class URIReferenceParserTest
         assertThat(uriRef17.getQuery()).isNull();
         assertThat(uriRef17.getFragment()).isNull();
 
-        var uriRef18 = new URIReferenceParser().parse("http://example.com:", UTF_8);;
+        var uriRef18 = new URIReferenceParser().parse("http://example.com:", UTF_8);
         assertThat(uriRef18.isRelativeReference()).isFalse();
         assertThat(uriRef18.getScheme()).isEqualTo("http");
         assertThat(uriRef18.hasAuthority()).isTrue();
@@ -294,7 +294,7 @@ class URIReferenceParserTest
         assertThat(uriRef18.getQuery()).isNull();
         assertThat(uriRef18.getFragment()).isNull();
 
-        var uriRef19 = new URIReferenceParser().parse("http://example.com:001", UTF_8);;
+        var uriRef19 = new URIReferenceParser().parse("http://example.com:001", UTF_8);
         assertThat(uriRef19.isRelativeReference()).isFalse();
         assertThat(uriRef19.getScheme()).isEqualTo("http");
         assertThat(uriRef19.hasAuthority()).isTrue();
@@ -308,7 +308,7 @@ class URIReferenceParserTest
         assertThat(uriRef19.getQuery()).isNull();
         assertThat(uriRef19.getFragment()).isNull();
 
-        var uriRef20 = new URIReferenceParser().parse("http://example.com/a/b/c", UTF_8);;
+        var uriRef20 = new URIReferenceParser().parse("http://example.com/a/b/c", UTF_8);
         assertThat(uriRef20.toString()).isEqualTo("http://example.com/a/b/c");
         assertThat(uriRef20.isRelativeReference()).isFalse();
         assertThat(uriRef20.getScheme()).isEqualTo("http");
@@ -323,7 +323,7 @@ class URIReferenceParserTest
         assertThat(uriRef20.getQuery()).isNull();
         assertThat(uriRef20.getFragment()).isNull();
 
-        var uriRef21 = new URIReferenceParser().parse("http://example.com/%61/%62/%63", UTF_8);;
+        var uriRef21 = new URIReferenceParser().parse("http://example.com/%61/%62/%63", UTF_8);
         assertThat(uriRef21.toString()).isEqualTo("http://example.com/%61/%62/%63");
         assertThat(uriRef21.isRelativeReference()).isFalse();
         assertThat(uriRef21.getScheme()).isEqualTo("http");
@@ -338,7 +338,7 @@ class URIReferenceParserTest
         assertThat(uriRef21.getQuery()).isNull();
         assertThat(uriRef21.getFragment()).isNull();
 
-        var uriRef22 = new URIReferenceParser().parse("http:/a", UTF_8);;
+        var uriRef22 = new URIReferenceParser().parse("http:/a", UTF_8);
         assertThat(uriRef22.isRelativeReference()).isFalse();
         assertThat(uriRef22.getScheme()).isEqualTo("http");
         assertThat(uriRef22.hasAuthority()).isFalse();
@@ -350,7 +350,7 @@ class URIReferenceParserTest
         assertThat(uriRef22.getQuery()).isNull();
         assertThat(uriRef22.getFragment()).isNull();
 
-        var uriRef23 = new URIReferenceParser().parse("http:a", UTF_8);;
+        var uriRef23 = new URIReferenceParser().parse("http:a", UTF_8);
         assertThat(uriRef23.isRelativeReference()).isFalse();
         assertThat(uriRef23.getScheme()).isEqualTo("http");
         assertThat(uriRef23.hasAuthority()).isFalse();
@@ -362,7 +362,7 @@ class URIReferenceParserTest
         assertThat(uriRef23.getQuery()).isNull();
         assertThat(uriRef23.getFragment()).isNull();
 
-        var uriRef24 = new URIReferenceParser().parse("//", UTF_8);;
+        var uriRef24 = new URIReferenceParser().parse("//", UTF_8);
         assertThat(uriRef24.isRelativeReference()).isTrue();
         assertThat(uriRef24.getScheme()).isNull();
         assertThat(uriRef24.hasAuthority()).isTrue();
@@ -376,7 +376,7 @@ class URIReferenceParserTest
         assertThat(uriRef24.getQuery()).isNull();
         assertThat(uriRef24.getFragment()).isNull();
 
-        var uriRef25 = new URIReferenceParser().parse("http://example.com?q", UTF_8);;
+        var uriRef25 = new URIReferenceParser().parse("http://example.com?q", UTF_8);
         assertThat(uriRef25.isRelativeReference()).isFalse();
         assertThat(uriRef25.getScheme()).isEqualTo("http");
         assertThat(uriRef25.hasAuthority()).isTrue();
@@ -390,7 +390,7 @@ class URIReferenceParserTest
         assertThat(uriRef25.getQuery()).isEqualTo("q");
         assertThat(uriRef25.getFragment()).isNull();
 
-        var uriRef26 = new URIReferenceParser().parse("http://example.com?", UTF_8);;
+        var uriRef26 = new URIReferenceParser().parse("http://example.com?", UTF_8);
         assertThat(uriRef26.isRelativeReference()).isFalse();
         assertThat(uriRef26.getScheme()).isEqualTo("http");
         assertThat(uriRef26.hasAuthority()).isTrue();
@@ -404,7 +404,7 @@ class URIReferenceParserTest
         assertThat(uriRef26.getQuery()).isEqualTo("");
         assertThat(uriRef26.getFragment()).isNull();
 
-        var uriRef27 = new URIReferenceParser().parse("http://example.com#f", UTF_8);;
+        var uriRef27 = new URIReferenceParser().parse("http://example.com#f", UTF_8);
         assertThat(uriRef27.isRelativeReference()).isFalse();
         assertThat(uriRef27.getScheme()).isEqualTo("http");
         assertThat(uriRef27.hasAuthority()).isTrue();
@@ -418,7 +418,7 @@ class URIReferenceParserTest
         assertThat(uriRef27.getQuery()).isNull();
         assertThat(uriRef27.getFragment()).isEqualTo("f");
 
-        var uriRef28 = new URIReferenceParser().parse("http://example.com#", UTF_8);;
+        var uriRef28 = new URIReferenceParser().parse("http://example.com#", UTF_8);
         assertThat(uriRef28.isRelativeReference()).isFalse();
         assertThat(uriRef28.getScheme()).isEqualTo("http");
         assertThat(uriRef28.hasAuthority()).isTrue();
@@ -432,7 +432,7 @@ class URIReferenceParserTest
         assertThat(uriRef28.getQuery()).isNull();
         assertThat(uriRef28.getFragment()).isEqualTo("");
 
-        var uriRef29 = new URIReferenceParser().parse("", UTF_8);;
+        var uriRef29 = new URIReferenceParser().parse("", UTF_8);
         assertThat(uriRef29.isRelativeReference()).isTrue();
         assertThat(uriRef29.getScheme()).isNull();
         assertThat(uriRef29.hasAuthority()).isFalse();

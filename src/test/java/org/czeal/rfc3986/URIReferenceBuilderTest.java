@@ -47,7 +47,7 @@ class URIReferenceBuilderTest
         assertThat(uriRef1.getQuery()).isNull();
         assertThat(uriRef1.getFragment()).isNull();
 
-        var uriRef2 = URIReferenceBuilder.fromURIReference("hTTp://example.com").build();;
+        var uriRef2 = URIReferenceBuilder.fromURIReference("hTTp://example.com").build();
         assertThat(uriRef2.toString()).isEqualTo("hTTp://example.com");
         assertThat(uriRef2.isRelativeReference()).isFalse();
         assertThat(uriRef2.hasAuthority()).isTrue();
@@ -64,7 +64,7 @@ class URIReferenceBuilderTest
         assertThat(uriRef2.getQuery()).isNull();
         assertThat(uriRef2.getFragment()).isNull();
 
-        var uriRef3 = URIReferenceBuilder.fromURIReference("//example.com").build();;
+        var uriRef3 = URIReferenceBuilder.fromURIReference("//example.com").build();
         assertThat(uriRef3.toString()).isEqualTo("//example.com");
         assertThat(uriRef3.isRelativeReference()).isTrue();
         assertThat(uriRef3.hasAuthority()).isTrue();
@@ -81,7 +81,7 @@ class URIReferenceBuilderTest
         assertThat(uriRef3.getQuery()).isNull();
         assertThat(uriRef3.getFragment()).isNull();
 
-        var uriRef4 = URIReferenceBuilder.fromURIReference("http:").setAuthorityRequired(false).build();;
+        var uriRef4 = URIReferenceBuilder.fromURIReference("http:").setAuthorityRequired(false).build();
         assertThat(uriRef4.isRelativeReference()).isFalse();
         assertThat(uriRef4.hasAuthority()).isFalse();
         assertThat(uriRef4.getScheme()).isEqualTo("http");
@@ -90,7 +90,7 @@ class URIReferenceBuilderTest
         assertThat(uriRef4.getQuery()).isNull();
         assertThat(uriRef4.getFragment()).isNull();
 
-        var uriRef5 = URIReferenceBuilder.fromURIReference("http://john@example.com").build();;
+        var uriRef5 = URIReferenceBuilder.fromURIReference("http://john@example.com").build();
         assertThat(uriRef5.toString()).isEqualTo("http://john@example.com");
         assertThat(uriRef5.isRelativeReference()).isFalse();
         assertThat(uriRef5.hasAuthority()).isTrue();
@@ -107,7 +107,7 @@ class URIReferenceBuilderTest
         assertThat(uriRef5.getQuery()).isNull();
         assertThat(uriRef5.getFragment()).isNull();
 
-        var uriRef6 = URIReferenceBuilder.fromURIReference("http://%6A%6F%68%6E@example.com").build();;
+        var uriRef6 = URIReferenceBuilder.fromURIReference("http://%6A%6F%68%6E@example.com").build();
         assertThat(uriRef6.toString()).isEqualTo("http://%6A%6F%68%6E@example.com");
         assertThat(uriRef6.isRelativeReference()).isFalse();
         assertThat(uriRef6.hasAuthority()).isTrue();
@@ -124,7 +124,7 @@ class URIReferenceBuilderTest
         assertThat(uriRef6.getQuery()).isNull();
         assertThat(uriRef6.getFragment()).isNull();
 
-        var uriRef7 = URIReferenceBuilder.fromURIReference("http://101.102.103.104").build();;
+        var uriRef7 = URIReferenceBuilder.fromURIReference("http://101.102.103.104").build();
         assertThat(uriRef7.toString()).isEqualTo("http://101.102.103.104");
         assertThat(uriRef7.isRelativeReference()).isFalse();
         assertThat(uriRef7.hasAuthority()).isTrue();
@@ -141,7 +141,7 @@ class URIReferenceBuilderTest
         assertThat(uriRef7.getQuery()).isNull();
         assertThat(uriRef7.getFragment()).isNull();
 
-        var uriRef8 = URIReferenceBuilder.fromURIReference("http://[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]").build();;
+        var uriRef8 = URIReferenceBuilder.fromURIReference("http://[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]").build();
         assertThat(uriRef8.toString()).isEqualTo("http://[2001:0db8:0001:0000:0000:0ab9:C0A8:0102]");
         assertThat(uriRef8.isRelativeReference()).isFalse();
         assertThat(uriRef8.hasAuthority()).isTrue();
@@ -158,7 +158,7 @@ class URIReferenceBuilderTest
         assertThat(uriRef8.getQuery()).isNull();
         assertThat(uriRef8.getFragment()).isNull();
 
-        var uriRef9 = URIReferenceBuilder.fromURIReference("http://[2001:db8:0:1:1:1:1:1]").build();;
+        var uriRef9 = URIReferenceBuilder.fromURIReference("http://[2001:db8:0:1:1:1:1:1]").build();
         assertThat(uriRef9.toString()).isEqualTo("http://[2001:db8:0:1:1:1:1:1]");
         assertThat(uriRef9.isRelativeReference()).isFalse();
         assertThat(uriRef9.hasAuthority()).isTrue();
@@ -175,7 +175,7 @@ class URIReferenceBuilderTest
         assertThat(uriRef9.getQuery()).isNull();
         assertThat(uriRef9.getFragment()).isNull();
 
-        var uriRef10 = URIReferenceBuilder.fromURIReference("http://[2001:0:9d38:6abd:0:0:0:42]").build();;
+        var uriRef10 = URIReferenceBuilder.fromURIReference("http://[2001:0:9d38:6abd:0:0:0:42]").build();
         assertThat(uriRef10.toString()).isEqualTo("http://[2001:0:9d38:6abd:0:0:0:42]");
         assertThat(uriRef10.isRelativeReference()).isFalse();
         assertThat(uriRef10.hasAuthority()).isTrue();
@@ -192,7 +192,7 @@ class URIReferenceBuilderTest
         assertThat(uriRef10.getQuery()).isNull();
         assertThat(uriRef10.getFragment()).isNull();
 
-        var uriRef11 = URIReferenceBuilder.fromURIReference("http://[fe80::1]").build();;
+        var uriRef11 = URIReferenceBuilder.fromURIReference("http://[fe80::1]").build();
         assertThat(uriRef11.toString()).isEqualTo("http://[fe80::1]");
         assertThat(uriRef11.isRelativeReference()).isFalse();
         assertThat(uriRef11.hasAuthority()).isTrue();
@@ -209,7 +209,7 @@ class URIReferenceBuilderTest
         assertThat(uriRef11.getQuery()).isNull();
         assertThat(uriRef11.getFragment()).isNull();
 
-        var uriRef12 = URIReferenceBuilder.fromURIReference("http://[2001:0:3238:DFE1:63::FEFB]").build();;
+        var uriRef12 = URIReferenceBuilder.fromURIReference("http://[2001:0:3238:DFE1:63::FEFB]").build();
         assertThat(uriRef12.toString()).isEqualTo("http://[2001:0:3238:DFE1:63::FEFB]");
         assertThat(uriRef12.isRelativeReference()).isFalse();
         assertThat(uriRef12.hasAuthority()).isTrue();
@@ -226,7 +226,7 @@ class URIReferenceBuilderTest
         assertThat(uriRef12.getQuery()).isNull();
         assertThat(uriRef12.getFragment()).isNull();
 
-        var uriRef13 = URIReferenceBuilder.fromURIReference("http://[v1.fe80::a+en1]").build();;
+        var uriRef13 = URIReferenceBuilder.fromURIReference("http://[v1.fe80::a+en1]").build();
         assertThat(uriRef13.toString()).isEqualTo("http://[v1.fe80::a+en1]");
         assertThat(uriRef13.isRelativeReference()).isFalse();
         assertThat(uriRef13.hasAuthority()).isTrue();
@@ -243,7 +243,7 @@ class URIReferenceBuilderTest
         assertThat(uriRef13.getQuery()).isNull();
         assertThat(uriRef13.getFragment()).isNull();
 
-        var uriRef14 = URIReferenceBuilder.fromURIReference("http://%65%78%61%6D%70%6C%65%2E%63%6F%6D").build();;
+        var uriRef14 = URIReferenceBuilder.fromURIReference("http://%65%78%61%6D%70%6C%65%2E%63%6F%6D").build();
         assertThat(uriRef14.toString()).isEqualTo("http://%65%78%61%6D%70%6C%65%2E%63%6F%6D");
         assertThat(uriRef14.isRelativeReference()).isFalse();
         assertThat(uriRef14.hasAuthority()).isTrue();
@@ -260,7 +260,7 @@ class URIReferenceBuilderTest
         assertThat(uriRef14.getQuery()).isNull();
         assertThat(uriRef14.getFragment()).isNull();
 
-        var uriRef15 = URIReferenceBuilder.fromURIReference("http://").build();;
+        var uriRef15 = URIReferenceBuilder.fromURIReference("http://").build();
         assertThat(uriRef15.isRelativeReference()).isFalse();
         assertThat(uriRef15.hasAuthority()).isTrue();
         assertThat(uriRef15.getScheme()).isEqualTo("http");
@@ -275,7 +275,7 @@ class URIReferenceBuilderTest
         assertThat(uriRef15.getQuery()).isNull();
         assertThat(uriRef15.getFragment()).isNull();
 
-        var uriRef16 = URIReferenceBuilder.fromURIReference("http:///a").build();;
+        var uriRef16 = URIReferenceBuilder.fromURIReference("http:///a").build();
         assertThat(uriRef16.isRelativeReference()).isFalse();
         assertThat(uriRef16.hasAuthority()).isTrue();
         assertThat(uriRef16.getScheme()).isEqualTo("http");
@@ -290,7 +290,7 @@ class URIReferenceBuilderTest
         assertThat(uriRef16.getQuery()).isNull();
         assertThat(uriRef16.getFragment()).isNull();
 
-        var uriRef17 = URIReferenceBuilder.fromURIReference("http://example.com:80").build();;
+        var uriRef17 = URIReferenceBuilder.fromURIReference("http://example.com:80").build();
         assertThat(uriRef17.isRelativeReference()).isFalse();
         assertThat(uriRef17.hasAuthority()).isTrue();
         assertThat(uriRef17.getScheme()).isEqualTo("http");
@@ -305,7 +305,7 @@ class URIReferenceBuilderTest
         assertThat(uriRef17.getQuery()).isNull();
         assertThat(uriRef17.getFragment()).isNull();
 
-        var uriRef18 = URIReferenceBuilder.fromURIReference("http://example.com:").build();;
+        var uriRef18 = URIReferenceBuilder.fromURIReference("http://example.com:").build();
         assertThat(uriRef18.isRelativeReference()).isFalse();
         assertThat(uriRef18.hasAuthority()).isTrue();
         assertThat(uriRef18.getScheme()).isEqualTo("http");
@@ -320,7 +320,7 @@ class URIReferenceBuilderTest
         assertThat(uriRef18.getQuery()).isNull();
         assertThat(uriRef18.getFragment()).isNull();
 
-        var uriRef19 = URIReferenceBuilder.fromURIReference("http://example.com:001").build();;
+        var uriRef19 = URIReferenceBuilder.fromURIReference("http://example.com:001").build();
         assertThat(uriRef19.isRelativeReference()).isFalse();
         assertThat(uriRef19.hasAuthority()).isTrue();
         assertThat(uriRef19.getScheme()).isEqualTo("http");
@@ -335,7 +335,7 @@ class URIReferenceBuilderTest
         assertThat(uriRef19.getQuery()).isNull();
         assertThat(uriRef19.getFragment()).isNull();
 
-        var uriRef20 = URIReferenceBuilder.fromURIReference("http://example.com/a/b/c").build();;
+        var uriRef20 = URIReferenceBuilder.fromURIReference("http://example.com/a/b/c").build();
         assertThat(uriRef20.toString()).isEqualTo("http://example.com/a/b/c");
         assertThat(uriRef20.isRelativeReference()).isFalse();
         assertThat(uriRef20.hasAuthority()).isTrue();
@@ -352,7 +352,7 @@ class URIReferenceBuilderTest
         assertThat(uriRef20.getQuery()).isNull();
         assertThat(uriRef20.getFragment()).isNull();
 
-        var uriRef21 = URIReferenceBuilder.fromURIReference("http://example.com/%61/%62/%63").build();;
+        var uriRef21 = URIReferenceBuilder.fromURIReference("http://example.com/%61/%62/%63").build();
         assertThat(uriRef21.toString()).isEqualTo("http://example.com/%61/%62/%63");
         assertThat(uriRef21.isRelativeReference()).isFalse();
         assertThat(uriRef21.hasAuthority()).isTrue();
@@ -369,7 +369,7 @@ class URIReferenceBuilderTest
         assertThat(uriRef21.getQuery()).isNull();
         assertThat(uriRef21.getFragment()).isNull();
 
-        var uriRef22 = URIReferenceBuilder.fromURIReference("http:/a").setAuthorityRequired(false).build();;
+        var uriRef22 = URIReferenceBuilder.fromURIReference("http:/a").setAuthorityRequired(false).build();
         assertThat(uriRef22.isRelativeReference()).isFalse();
         assertThat(uriRef22.hasAuthority()).isFalse();
         assertThat(uriRef22.getScheme()).isEqualTo("http");
@@ -378,7 +378,7 @@ class URIReferenceBuilderTest
         assertThat(uriRef22.getQuery()).isNull();
         assertThat(uriRef22.getFragment()).isNull();
 
-        var uriRef23 = URIReferenceBuilder.fromURIReference("http:a").setAuthorityRequired(false).build();;
+        var uriRef23 = URIReferenceBuilder.fromURIReference("http:a").setAuthorityRequired(false).build();
         assertThat(uriRef23.isRelativeReference()).isFalse();
         assertThat(uriRef23.hasAuthority()).isFalse();
         assertThat(uriRef23.getScheme()).isEqualTo("http");
@@ -387,7 +387,7 @@ class URIReferenceBuilderTest
         assertThat(uriRef23.getQuery()).isNull();
         assertThat(uriRef23.getFragment()).isNull();
 
-        var uriRef24 = URIReferenceBuilder.fromURIReference("//").build();;
+        var uriRef24 = URIReferenceBuilder.fromURIReference("//").build();
         assertThat(uriRef24.isRelativeReference()).isTrue();
         assertThat(uriRef24.hasAuthority()).isTrue();
         assertThat(uriRef24.getScheme()).isNull();
@@ -412,7 +412,7 @@ class URIReferenceBuilderTest
     @Test
     void fromURIReference_with_URIReference()
     {
-        var uriRef1 = URIReferenceBuilder.fromURIReference(URIReference.parse("http://example.com")).build();;
+        var uriRef1 = URIReferenceBuilder.fromURIReference(URIReference.parse("http://example.com")).build();
         assertThat(uriRef1.toString()).isEqualTo("http://example.com");
         assertThat(uriRef1.isRelativeReference()).isFalse();
         assertThat(uriRef1.hasAuthority()).isTrue();
@@ -788,7 +788,7 @@ class URIReferenceBuilderTest
 
         assertThrowsNPE(
             "The input string must not be null.",
-            () -> URIReferenceBuilder.fromURIReference(URIReference.parse((String)null)).build());
+            () -> URIReferenceBuilder.fromURIReference(URIReference.parse(null)).build());
     }
 
 
