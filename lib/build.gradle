@@ -33,7 +33,6 @@ jar {
 // Configure the test logging to be more verbose and informative.
 test {
     testLogging {
-        outputs.upToDateWhen { false }
         showStandardStreams = true
     }
 }
