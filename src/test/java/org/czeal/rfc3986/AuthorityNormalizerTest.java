@@ -40,8 +40,8 @@ public class AuthorityNormalizerTest
         assertEquals("userinfoABC", normalized2.getUserinfo());
         assertEquals(REGNAME, normalized2.getHost().getType());
         assertEquals("example.com", normalized2.getHost().getValue());
-        assertEquals(443, normalized2.getPort());
-        assertEquals("userinfoABC@example.com:443", normalized2.toString());
+        assertEquals(-1, normalized2.getPort());
+        assertEquals("userinfoABC@example.com", normalized2.toString());
 
         Authority normalized3 = new AuthorityNormalizer().normalize(null, UTF_8, "http");
         assertEquals(null, normalized3);

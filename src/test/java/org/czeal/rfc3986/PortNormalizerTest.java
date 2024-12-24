@@ -27,6 +27,7 @@ public class PortNormalizerTest
     {
         assertEquals(-1, new PortNormalizer().normalize(80, "http"));
         assertEquals(80, new PortNormalizer().normalize(80, "custom"));
-        assertEquals(443, new PortNormalizer().normalize(443, "https"));
+        assertEquals(-1, new PortNormalizer().normalize(443, "https"));
+        assertEquals(443, new PortNormalizer().normalize(443, "custom"));
     }
 }

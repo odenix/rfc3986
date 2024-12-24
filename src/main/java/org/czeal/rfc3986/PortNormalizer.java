@@ -79,11 +79,16 @@ class PortNormalizer
 
     private boolean isDefaultPortForScheme(int port, String scheme)
     {
-        if ("http".equals(scheme))
-        {
-            // Check if the port value is 80, which is the default value
-            // for "http".
-            return port == 80;
+        // Check if the port value is 80, which is the default value
+        // for "http".
+        if (port == 80) {
+            return "http".equals(scheme);
+        }
+
+        // Check if the port value is 443, which is the default value
+        // for "https".
+        if (port == 443) {
+            return "https".equals(scheme);
         }
 
         return false;
