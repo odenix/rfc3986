@@ -140,7 +140,7 @@ class PathValidator
             validatePathEmpty(path);
             return;
         }
-        catch (Throwable t)
+        catch (Throwable ignored)
         {
         }
 
@@ -150,7 +150,7 @@ class PathValidator
             validatePathAbsolute(path, charset);
             return;
         }
-        catch (Throwable t)
+        catch (Throwable ignored)
         {
         }
 
@@ -188,6 +188,7 @@ class PathValidator
         String[] segments = path.substring(1).split("/", -1);
 
         // Validate each segment.
+        //noinspection ForLoopReplaceableByForEach
         for (int i = 0; i < segments.length; i++)
         {
             new SegmentValidator().validate(segments[i], charset);

@@ -253,11 +253,11 @@ class Utils
         String output = "";
 
         // While the input is not empty, loop the following steps.
-        while (input.length() > 0)
+        while (!input.isEmpty())
         {
             // If the input begins with a prefix of "../" or "./", then
             // remove that prefix from the input;
-            Matcher m = Pattern.compile("^\\.?\\.\\/").matcher(input);
+            Matcher m = Pattern.compile("^\\.?\\./").matcher(input);
             if (m.find())
             {
                 input = m.replaceFirst("");
@@ -267,7 +267,7 @@ class Utils
             // If the input begins with a prefix of "/./" or "/.", where
             // "." is a complete path segment, then replace that prefix
             // with "/" in the input.
-            m = Pattern.compile("^\\/\\.(\\/|$)").matcher(input);
+            m = Pattern.compile("^/\\.(/|$)").matcher(input);
             if (m.find())
             {
                 input = m.replaceFirst("/");
@@ -278,7 +278,7 @@ class Utils
             // where ".." is a complete path segment, then replace that
             // prefix with "/" in the input and remove the last segment
             // and its preceding "/" (if any) from the output.
-            m = Pattern.compile("^\\/\\.\\.(\\/|$)").matcher(input);
+            m = Pattern.compile("^/\\.\\.(/|$)").matcher(input);
             if (m.find())
             {
                 input = m.replaceFirst("/");
@@ -299,13 +299,12 @@ class Utils
             // end of the output, including the initial "/" character
             // (if any) and any subsequent characters up to, but not
             // including, the next "/" character or the end of the input.
-            m = Pattern.compile("^(?<firstsegment>\\/?[^/]*)(?<remaining>.*)$")
+            m = Pattern.compile("^(?<firstsegment>/?[^/]*)(?<remaining>.*)$")
                        .matcher(input);
             if (m.find())
             {
                 input   = m.group("remaining");
                 output += m.group("firstsegment");
-                continue;
             }
         }
 
@@ -329,12 +328,13 @@ class Utils
     static String dropLastSegment(String path, boolean dropLastSlash)
     {
         // The regular expression for the target.
-        String regex = dropLastSlash ? "\\/?[^/]*$" : "[^/]*$";
+        String regex = dropLastSlash ? "/?[^/]*$" : "[^/]*$";
 
         // Get a matcher for the pattern.
         Matcher m = Pattern.compile(regex).matcher(path);
 
         // Find the target. (Any inputs matches the pattern.)
+        //noinspection ResultOfMethodCallIgnored
         m.find();
 
         // Drop the target.

@@ -74,7 +74,7 @@ class URIReferenceParser
      * 3986, Appendix B. Parsing a URI Reference with a Regular Expression".
      */
     private static final Pattern PATTERN_URI = Pattern.compile(
-        "(?<scheme>[^:/?#]+):(\\/\\/(?<authority>[^/?#]*))?(?<path>[^?#]*)(\\?(?<query>[^#]*))?(#(?<fragment>.*))?");
+        "(?<scheme>[^:/?#]+):(//(?<authority>[^/?#]*))?(?<path>[^?#]*)(\\?(?<query>[^#]*))?(#(?<fragment>.*))?");
 
 
     /**
@@ -82,7 +82,7 @@ class URIReferenceParser
      * to "RFC 3986, Appendix B. Parsing a URI Reference with a Regular Expression".
      */
     private static final Pattern PATTERN_REGEX_RELATIVE_REFERENCE = Pattern.compile(
-        "(\\/\\/(?<authority>[^/?#]*))?(?<path>[^?#]*)(\\?(?<query>[^#]*))?(#(?<fragment>.*))?");
+        "(//(?<authority>[^/?#]*))?(?<path>[^?#]*)(\\?(?<query>[^#]*))?(#(?<fragment>.*))?");
 
 
     /**

@@ -40,8 +40,8 @@ abstract class PercentEncodedStringProcessor
      */
     protected static class Info
     {
-        private StringBuffer          sb = new StringBuffer();
-        private ByteArrayOutputStream bs = new ByteArrayOutputStream();
+        private final StringBuffer          sb = new StringBuffer();
+        private final ByteArrayOutputStream bs = new ByteArrayOutputStream();
 
 
         /**

@@ -56,7 +56,7 @@ class AuthorityParser
      * The regular expression for parsing an authority.
      */
     private static final Pattern PATTERN_AUTHORITY = Pattern.compile(
-        "((?<userinfo>[^@]*)@)?(?<host>(\\[[^]]*\\])|[^:]*)?(:(?<port>.*))?");
+        "((?<userinfo>[^@]*)@)?(?<host>(\\[[^]]*])|[^:]*)?(:(?<port>.*))?");
 
 
     /**

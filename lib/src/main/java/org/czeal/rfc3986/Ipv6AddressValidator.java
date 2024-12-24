@@ -43,7 +43,6 @@ import java.util.Arrays;
  *             / [ *4( h16 ":" ) h16 ] "::"              ls32
  *             / [ *5( h16 ":" ) h16 ] "::"              h16
  *             / [ *6( h16 ":" ) h16 ] "::"
- *
  * h16         = 1*4HEXDIG
  * ls3         = ( h16 ":" h16 ) / IPv4address
  * IPv4address = dec-octet "." dec-octet "." dec-octet "." dec-octet
@@ -113,6 +112,7 @@ class Ipv6AddressValidator
         }
 
         // We won't reach here.
+        assert false;
     }
 
 
@@ -256,6 +256,7 @@ class Ipv6AddressValidator
     private void validateH16Array(String[] segments, String enclosed)
     {
         // Ensure each segment is a 16-bit piece.
+        //noinspection ForLoopReplaceableByForEach
         for (int i = 0; i < segments.length; i++)
         {
             validateH16(segments[i], enclosed);

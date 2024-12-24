@@ -17,6 +17,8 @@ package org.czeal.rfc3986;
 
 
 import static java.nio.charset.StandardCharsets.UTF_8;
+
+import java.io.Serial;
 import java.io.Serializable;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -49,6 +51,7 @@ public class Authority implements Serializable, Comparable<Authority>
     /**
      * Serial Version UID.
      */
+    @Serial
     private static final long serialVersionUID = 1L;
 
 

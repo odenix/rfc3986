@@ -219,7 +219,7 @@ class URIReferenceResolver
     {
         if (uriRef.getAuthority() != null)
         {
-            processOnNonNullAuthority(res, uriRef, baseUriRef);
+            processOnNonNullAuthority(res, uriRef);
         }
         else
         {
@@ -231,7 +231,7 @@ class URIReferenceResolver
 
 
     private void processOnNonNullAuthority(
-        ProcessResult res, URIReference uriRef, URIReference baseUriRef)
+        ProcessResult res, URIReference uriRef)
     {
         res.authority = uriRef.getAuthority();
         res.path      = removeDotSegments(uriRef.getPath());

@@ -17,6 +17,8 @@ package org.czeal.rfc3986;
 
 
 import static java.nio.charset.StandardCharsets.UTF_8;
+
+import java.io.Serial;
 import java.io.Serializable;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -127,6 +129,7 @@ public class URIReference implements Serializable, Comparable<URIReference>
     /**
      * Serial Version UID.
      */
+    @Serial
     private static final long serialVersionUID = 1L;
 
 
@@ -584,7 +587,7 @@ public class URIReference implements Serializable, Comparable<URIReference>
 
     /**
      * Resolves the given URI reference against this URI reference.
-     *
+     * <p>
      * This method works as if invoking it were equivalent to evaluating the expression
      * <code>{@link #resolve(URIReference) resolve}({@link
      * #parse(String, Charset) parse}(uriRef, {@link #getCharset()}))</code>.

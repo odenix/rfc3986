@@ -78,7 +78,7 @@ class QueryParams
 
         // Convert the input string to a list of QueryPrams.
         List<QueryParam> params = Arrays.stream(queryParams.split("&", -1))
-                                        .map(e -> QueryParam.parse(e))
+                                        .map(QueryParam::parse)
                                         .collect(Collectors.toList());
 
         // Create a Query object.
