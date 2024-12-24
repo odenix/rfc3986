@@ -62,7 +62,7 @@ class PathSegments
         }
 
         // Convert the input string to a list of Strings.
-        List<String> segments = new ArrayList<>( Arrays.asList(pathSegments.split("/", -1)) );
+        var segments = new ArrayList<>( Arrays.asList(pathSegments.split("/", -1)) );
 
         // Create a PathSegments object.
         return new PathSegments(segments);
@@ -134,7 +134,7 @@ class PathSegments
             throw newNPE("The segments must not be null.");
         }
 
-        for (String s : segments)
+        for (var s : segments)
         {
             if (s == null)
             {

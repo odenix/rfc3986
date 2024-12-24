@@ -62,10 +62,10 @@ class HostNormalizer extends PercentEncodedStringNormalizer
     Host normalize(Host host, Charset charset)
     {
         // Normalize the value.
-        String normalizedValue = normalizeValue(host.getValue(), charset);
+        var normalizedValue = normalizeValue(host.getValue(), charset);
 
         // Normalize the type.
-        HostType normalizedType = new HostTypeDeterminer().determine(normalizedValue, charset);
+        var normalizedType = new HostTypeDeterminer().determine(normalizedValue, charset);
 
         // Build a Host instance.
         return new Host(normalizedType, normalizedValue);

@@ -16,7 +16,6 @@
 package org.czeal.rfc3986;
 
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
@@ -249,15 +248,15 @@ class Utils
     {
         // Initialize the input with the no-appended path components and the output
         // with the empty string.
-        String input  = path;
-        String output = "";
+        var input  = path;
+        var output = "";
 
         // While the input is not empty, loop the following steps.
         while (!input.isEmpty())
         {
             // If the input begins with a prefix of "../" or "./", then
             // remove that prefix from the input;
-            Matcher m = Pattern.compile("^\\.?\\./").matcher(input);
+            var m = Pattern.compile("^\\.?\\./").matcher(input);
             if (m.find())
             {
                 input = m.replaceFirst("");
@@ -328,10 +327,10 @@ class Utils
     static String dropLastSegment(String path, boolean dropLastSlash)
     {
         // The regular expression for the target.
-        String regex = dropLastSlash ? "/?[^/]*$" : "[^/]*$";
+        var regex = dropLastSlash ? "/?[^/]*$" : "[^/]*$";
 
         // Get a matcher for the pattern.
-        Matcher m = Pattern.compile(regex).matcher(path);
+        var m = Pattern.compile(regex).matcher(path);
 
         // Find the target. (Any inputs matches the pattern.)
         //noinspection ResultOfMethodCallIgnored

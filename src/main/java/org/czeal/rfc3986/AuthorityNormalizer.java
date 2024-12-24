@@ -79,7 +79,7 @@ class AuthorityNormalizer
         }
 
         // The normalization result.
-        Authority.ProcessResult res = new Authority.ProcessResult();
+        var res = new Authority.ProcessResult();
 
         // Process the userinfo.
         processUserinfo(res, authority, charset);

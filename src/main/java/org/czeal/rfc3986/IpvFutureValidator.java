@@ -68,7 +68,7 @@ class IpvFutureValidator
         }
 
         // Divide the host value into up-to two segments by the first period.
-        String[] segments = ipvFuture.split("\\.", 2);
+        var segments = ipvFuture.split("\\.", 2);
 
         // If the number of the segments is 1, it means the host value doesn't
         // contain a period.
@@ -91,7 +91,7 @@ class IpvFutureValidator
     private void validateFirstSegmentOfIpvFuture(String enclosed, String firstSegment)
     {
         // Check if the first segment starts with "v" or "V".
-        boolean isValid = firstSegment.startsWith("v") || firstSegment.startsWith("V");
+        var isValid = firstSegment.startsWith("v") || firstSegment.startsWith("V");
 
         // Ensure the first segment starts with 'v' or 'V'.
         if (!isValid)
@@ -104,7 +104,7 @@ class IpvFutureValidator
 
         // Extract the version value (= characters after the first 'v') from the
         // first segment .
-        String version = firstSegment.substring(1);
+        var version = firstSegment.substring(1);
 
         // Ensure the version is not empty.
         if (version.isEmpty())
@@ -116,9 +116,9 @@ class IpvFutureValidator
         }
 
         // Ensure all the characters in the version value are valid.
-        for (int i = 0; i < version.length(); i++)
+        for (var i = 0; i < version.length(); i++)
         {
-            char c = version.charAt(i);
+            var c = version.charAt(i);
 
             if (!isHexDigit(c))
             {
@@ -144,9 +144,9 @@ class IpvFutureValidator
         }
 
         // Ensure all the characters in the second segment are valid.
-        for (int i = 0; i < secondSegment.length(); i++)
+        for (var i = 0; i < secondSegment.length(); i++)
         {
-            char c = secondSegment.charAt(i);
+            var c = secondSegment.charAt(i);
 
             if (isUnreserved(c) || isSubdelim(c) || c == ':')
             {

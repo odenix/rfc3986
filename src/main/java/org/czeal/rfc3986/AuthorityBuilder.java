@@ -146,7 +146,7 @@ class AuthorityBuilder
     Authority build()
     {
         // The resultant Authority.
-        ProcessResult res = new ProcessResult();
+        var res = new ProcessResult();
 
         // Process the userinfo.
         processUserinfo(res);

@@ -185,11 +185,11 @@ class PathValidator
         }
 
         // The path segments.
-        String[] segments = path.substring(1).split("/", -1);
+        var segments = path.substring(1).split("/", -1);
 
         // Validate each segment.
         //noinspection ForLoopReplaceableByForEach
-        for (int i = 0; i < segments.length; i++)
+        for (var i = 0; i < segments.length; i++)
         {
             new SegmentValidator().validate(segments[i], charset);
         }
@@ -211,13 +211,13 @@ class PathValidator
         }
 
         // Split the path into segments.
-        String[] segments = path.substring(1).split("/", -1);
+        var segments = path.substring(1).split("/", -1);
 
         // Validate the first element.
         new SegmentNzValidator().validate(segments[0], charset);
 
         // Validate remaining segments.
-        for (int i = 1; i < segments.length; i++)
+        for (var i = 1; i < segments.length; i++)
         {
             new SegmentValidator().validate(segments[i], charset);
         }
@@ -230,13 +230,13 @@ class PathValidator
         ensurePathNotEmpty(path);
 
         // Split the path into segments.
-        String[] segments = path.split("/", -1);
+        var segments = path.split("/", -1);
 
         // Validate the first element.
         new SegmentNzNcValidator().validate(segments[0], charset);
 
         // Validate the remaining segments.
-        for (int i = 1; i < segments.length; i++)
+        for (var i = 1; i < segments.length; i++)
         {
             new SegmentValidator().validate(segments[i], charset);
         }
@@ -249,13 +249,13 @@ class PathValidator
         ensurePathNotEmpty(path);
 
         // Split the path into segments.
-        String[] segments = path.split("/", -1);
+        var segments = path.split("/", -1);
 
         // Validate the first element.
         new SegmentNzValidator().validate(segments[0], charset);
 
         // Validate the remaining segments.
-        for (int i = 1; i < segments.length; i++)
+        for (var i = 1; i < segments.length; i++)
         {
             new SegmentValidator().validate(segments[i], charset);
         }

@@ -119,18 +119,18 @@ abstract class PercentEncodedStringProcessor
     protected String process(String input, Charset charset, StringBuilder outputBuilder)
     {
         // The current index.
-        int currentIndex = 0;
+        var currentIndex = 0;
 
         // The last index.
-        int lastIndex = input.length() - 1;
+        var lastIndex = input.length() - 1;
 
         // The stream to store bytes represented by percent-encoded values.
-        Info info = new Info();
+        var info = new Info();
 
         while (currentIndex <= lastIndex)
         {
             // The character at the current index.
-            char c = input.charAt(currentIndex);
+            var c = input.charAt(currentIndex);
 
             if (c == '%')
             {
@@ -164,18 +164,18 @@ abstract class PercentEncodedStringProcessor
         }
 
         // Extract the target percent-encoded value "%XX" from the input string.
-        String percentEncodedValue = input.substring(currentIndex, currentIndex + 3);
+        var percentEncodedValue = input.substring(currentIndex, currentIndex + 3);
 
         // Convert the higher and lower hex digits of the percent-encoded value
         // to a byte.
-        byte b = toByte(input, currentIndex + 1, currentIndex + 2);
+        var b = toByte(input, currentIndex + 1, currentIndex + 2);
 
         // Save the percent-encoded value and the bytes.
         info.add(percentEncodedValue, b);
 
         // If the next index (currentIndex + 3) exceeds the last index  or the
         // character at the next index is not '%'.
-        int nextIndex = currentIndex + 3;
+        var nextIndex = currentIndex + 3;
         if (nextIndex > lastIndex || input.charAt(nextIndex) != '%')
         {
             // Decode the percent-encoded values.
@@ -190,19 +190,19 @@ abstract class PercentEncodedStringProcessor
     private byte toByte(String input, int higherHexDigitIndex, int lowerHexDigitIndex)
     {
         // The higher hex digit.
-        char higherHexDigit = input.charAt(higherHexDigitIndex);
+        var higherHexDigit = input.charAt(higherHexDigitIndex);
 
         // Read the higher hex digit in the percent-encoded value and convert it
         // to an int value.
-        int intOfHigherHexDigit = toIntOfHexDigit(
+        var intOfHigherHexDigit = toIntOfHexDigit(
             input, higherHexDigitIndex, higherHexDigit);
 
         // The lower hex digit.
-        char lowerHexDigit = input.charAt(lowerHexDigitIndex);
+        var lowerHexDigit = input.charAt(lowerHexDigitIndex);
 
         // Read the lower hex digit in the percent-encoded value and convert it
         // to an int value.
-        int intOfLowerHexDigit = toIntOfHexDigit(
+        var intOfLowerHexDigit = toIntOfHexDigit(
             input, lowerHexDigitIndex, lowerHexDigit);
 
         // Calculate a byte represented by the percent-encoded value.
@@ -213,7 +213,7 @@ abstract class PercentEncodedStringProcessor
     private int toIntOfHexDigit(String input, int index, char hexDigit)
     {
         // Convert the hex digit to an int value.
-        int intOfHexDigit = fromHexDigit(hexDigit);
+        var intOfHexDigit = fromHexDigit(hexDigit);
 
         // Ensure the hex digit is valid.
         if (intOfHexDigit == -1)

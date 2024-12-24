@@ -62,7 +62,7 @@ class Ipv4AddressValidator
     void validate(String ipv4Address)
     {
         // Divide the host value by periods.
-        String[] decOctets = ipv4Address.split("\\.", -1);
+        var decOctets = ipv4Address.split("\\.", -1);
 
         // Ensure the host value contains four octets.
         if (decOctets.length != 4)
@@ -73,7 +73,7 @@ class Ipv4AddressValidator
         }
 
         // Ensure each part is a dec-octet.
-        for (int i = 0; i < 4; i++)
+        for (var i = 0; i < 4; i++)
         {
             validateDecOctet(decOctets[i], ipv4Address);
         }
@@ -91,7 +91,7 @@ class Ipv4AddressValidator
         }
 
         // The length of the dec-octet. Expected to be either 1, 2, or 3.
-        int length = decOctet.length();
+        var length = decOctet.length();
 
         if (length == 1)
         {
@@ -141,7 +141,7 @@ class Ipv4AddressValidator
     private void validateThreeDigitDecOctet(String decOctet, String rawHost)
     {
         // The first digit.
-        char firstDigit = decOctet.charAt(0);
+        var firstDigit = decOctet.charAt(0);
 
         if (firstDigit == '1')
         {
@@ -177,7 +177,7 @@ class Ipv4AddressValidator
         String decOctet, String rawHost)
     {
         // The second digit.
-        char secondDigit = decOctet.charAt(1);
+        var secondDigit = decOctet.charAt(1);
 
         // If the second digit in the range from '0' to '4'.
         if (isInRange(secondDigit, '0', '4'))
@@ -203,7 +203,7 @@ class Ipv4AddressValidator
     private void ensureDecOctetDigit(String rawHost, String decOctet, int index)
     {
         // The digit at the index in the dec-octet.
-        char digit = decOctet.charAt(index);
+        var digit = decOctet.charAt(index);
 
         // Ensure that the digit is within the range from '0' to '9'.
         if (!isDigit(digit))
@@ -217,7 +217,7 @@ class Ipv4AddressValidator
         String rawHost, String decOctet, int index)
     {
         // The digit at the index in the dec-octet.
-        char digit = decOctet.charAt(index);
+        var digit = decOctet.charAt(index);
 
         // Ensure that the digit is within the range from '0' to '5'.
         if (!isInRange(digit, '0', '5'))

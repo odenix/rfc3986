@@ -64,7 +64,7 @@ abstract class PercentEncodedStringNormalizer extends PercentEncodedStringProces
         Charset charset, StringBuilder outputBuilder, CharBuffer buffer)
     {
         // Convert the decoded value (char buffer) to a string.
-        String normalized = buffer.toString();
+        var normalized = buffer.toString();
 
         // If lower-case is required.
         if (toLowerCase())
@@ -88,7 +88,7 @@ abstract class PercentEncodedStringNormalizer extends PercentEncodedStringProces
     {
         // Convert the value to lower-case if it's required; otherwise, use the
         // value as-is.
-        char normalized = toLowerCase() ? Character.toLowerCase(c) : c;
+        var normalized = toLowerCase() ? Character.toLowerCase(c) : c;
 
         // Save the normalized value to the output builder.
         outputBuilder.append(normalized);

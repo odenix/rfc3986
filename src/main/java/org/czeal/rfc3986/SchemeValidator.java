@@ -92,9 +92,9 @@ class SchemeValidator
 
     private void validateRemainingCharacters(String scheme)
     {
-        for (int i = 1; i < scheme.length(); i++)
+        for (var i = 1; i < scheme.length(); i++)
         {
-            char c = scheme.charAt(i);
+            var c = scheme.charAt(i);
 
             if (!isValid(c))
             {

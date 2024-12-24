@@ -554,7 +554,7 @@ public class URIReferenceBuilder
     public URIReference build()
     {
         // The resultant URI reference.
-        ProcessResult res = new ProcessResult();
+        var res = new ProcessResult();
 
         // Process the charset.
         processCharset(res);
@@ -628,7 +628,7 @@ public class URIReferenceBuilder
     private void processPath(ProcessResult res)
     {
         // Convert the path segments to a string.
-        String path = pathSegments == null ? null : pathSegments.toString();
+        var path = pathSegments == null ? null : pathSegments.toString();
 
         // Validate the path.
         new PathValidator().validate(
@@ -642,7 +642,7 @@ public class URIReferenceBuilder
     private void processQuery(ProcessResult res)
     {
         // Convert the query parameters to a string.
-        String query = (queryParams == null || queryParams.isEmpty()) ? null : queryParams.toString();
+        var query = (queryParams == null || queryParams.isEmpty()) ? null : queryParams.toString();
 
         // Validate the query.
         new QueryValidator().validate(query, res.charset);

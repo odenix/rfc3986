@@ -70,9 +70,9 @@ class PortValidator
             return;
         }
 
-        for (int i = 0; i < port.length(); i++)
+        for (var i = 0; i < port.length(); i++)
         {
-            char c = port.charAt(i);
+            var c = port.charAt(i);
 
             if (!isDigit(c))
             {

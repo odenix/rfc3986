@@ -85,7 +85,7 @@ class URIReferenceNormalizer
         validate(uriRef);
 
         // The parse result.
-        ProcessResult res = new ProcessResult();
+        var res = new ProcessResult();
 
         // Set the charset.
         res.charset = uriRef.getCharset();

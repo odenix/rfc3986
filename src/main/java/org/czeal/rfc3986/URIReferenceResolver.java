@@ -121,7 +121,7 @@ class URIReferenceResolver
         validate(uriRef, baseUriRef);
 
         // The resolution result.
-        ProcessResult res = new ProcessResult();
+        var res = new ProcessResult();
 
         // Set the charset.
         res.charset = uriRef.getCharset();

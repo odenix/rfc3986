@@ -93,7 +93,7 @@ class Ipv6AddressValidator
         //               / [ *6( h16 ":" ) h16 ] "::"
 
         // Divide the string into up-to two parts by the first "::".
-        String[] parts = ipv6Address.split("::", 2);
+        var parts = ipv6Address.split("::", 2);
 
         if (parts.length == 1)
         {
@@ -124,7 +124,7 @@ class Ipv6AddressValidator
         //   6( h16 ":" ) IPv4address
 
         // Divide the input string by ':'.
-        String[] segments = ipv6Address.split(":", -1);
+        var segments = ipv6Address.split(":", -1);
 
         if (segments.length == 7)
         {
@@ -179,15 +179,15 @@ class Ipv6AddressValidator
         //   [ *4( h16 ":" ) h16 ] "::"              IPv4address
 
         // Check the value before "::".
-        int bitsBeforeDoubleColons =
+        var bitsBeforeDoubleColons =
             checkValueBeforeDoubleColons(valueBeforeDoubleColons, value);
 
         // Check the value after "::".
-        int bitsAfterDoubleColons =
+        var bitsAfterDoubleColons =
             checkValueAfterDoubleColons(valueAfterDoubleColons, value);
 
         // The total bits.
-        int totalBits = bitsBeforeDoubleColons + bitsAfterDoubleColons;
+        var totalBits = bitsBeforeDoubleColons + bitsAfterDoubleColons;
 
         // Ensure the total bits does not exceed the maximum value.
         if (totalBits > MAX_BITS)
@@ -210,7 +210,7 @@ class Ipv6AddressValidator
         }
 
         // Divide the part with ":".
-        String[] segments = value.split(":", -1);
+        var segments = value.split(":", -1);
 
         // Ensure each segment is H16.
         validateH16Array(segments, enclosed);
@@ -230,7 +230,7 @@ class Ipv6AddressValidator
         }
 
         // Divide the segment with ":".
-        String[] segments = part.split(":", -1);
+        var segments = part.split(":", -1);
 
         try
         {
@@ -257,7 +257,7 @@ class Ipv6AddressValidator
     {
         // Ensure each segment is a 16-bit piece.
         //noinspection ForLoopReplaceableByForEach
-        for (int i = 0; i < segments.length; i++)
+        for (var i = 0; i < segments.length; i++)
         {
             validateH16(segments[i], enclosed);
         }
@@ -285,9 +285,9 @@ class Ipv6AddressValidator
         }
 
         // Ensure each character in the segment is a hex digit.
-        for (int i = 0; i < segment.length(); i++)
+        for (var i = 0; i < segment.length(); i++)
         {
-            char c = segment.charAt(i);
+            var c = segment.charAt(i);
 
             if (!isHexDigit(c))
             {

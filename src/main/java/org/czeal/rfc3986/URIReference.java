@@ -483,7 +483,7 @@ public class URIReference implements Serializable, Comparable<URIReference>
     @Override
     public String toString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
 
         // Append a scheme if present.
         if (getScheme() != null)

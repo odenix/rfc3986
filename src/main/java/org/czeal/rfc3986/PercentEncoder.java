@@ -133,13 +133,13 @@ class PercentEncoder
         validate(input, charset);
 
         // The builder for the resultant string.
-        StringBuilder outputBuilder = new StringBuilder();
+        var outputBuilder = new StringBuilder();
 
         // Encode each character in the input.
-        for (int i = 0; i < input.length(); i++)
+        for (var i = 0; i < input.length(); i++)
         {
             // The i-th character of the input value.
-            char c = input.charAt(i);
+            var c = input.charAt(i);
 
             // If the character should be preserved.
             if (isPreserved(preservedChars, c))
@@ -187,13 +187,13 @@ class PercentEncoder
     private char[] encode(Charset charset, char c)
     {
         // Encode the character into bytes using the charset.
-        byte[] bytes = toBytes(charset, c);
+        var bytes = toBytes(charset, c);
 
         // The output array.
-        char[] chars = new char[3 * bytes.length];
+        var chars = new char[3 * bytes.length];
 
         // For each byte.
-        for (int i = 0; i < bytes.length; i++)
+        for (var i = 0; i < bytes.length; i++)
         {
             // Create a percent-encoded value.
             chars[3 * i    ] = '%';

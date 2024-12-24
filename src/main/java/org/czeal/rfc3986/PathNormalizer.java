@@ -94,7 +94,7 @@ class PathNormalizer extends PercentEncodedStringNormalizer
         //     should remove dot-segments by applying the remove_dot_segments
         //     algorithm to the path, as described in Section 5.2.4.
 
-        String dotRemoved = removeDotSegments(path);
+        var dotRemoved = removeDotSegments(path);
 
         // 2. Normalize the resolved path.
         return process(dotRemoved, charset, new StringBuilder());

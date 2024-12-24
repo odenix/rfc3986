@@ -60,14 +60,14 @@ class QueryParam
         }
 
         // Split the input string into two parts by the first "=" in the input string.
-        String[] kv = queryParams.split("=", 2);
+        var kv = queryParams.split("=", 2);
 
         // Set the key and value.
-        String k = kv[0];
+        var k = kv[0];
 
         // If the input string contains "=", set the value to the second element in the
         // array; otherwise, set it to null.
-        String v = kv.length > 1 ? kv[1] : null;
+        var v = kv.length > 1 ? kv[1] : null;
 
         // Create a QueryParam object.
         return new QueryParam(k, v);

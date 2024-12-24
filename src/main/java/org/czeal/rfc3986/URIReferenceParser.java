@@ -121,7 +121,7 @@ class URIReferenceParser
         validate(uriRef, charset);
 
         // The parse result.
-        ParseResult res = new ParseResult();
+        var res = new ParseResult();
 
         // Set the charset.
         res.charset = charset;
@@ -172,13 +172,13 @@ class URIReferenceParser
         //   reference.
 
         // Get a matcher to match the input string as a URI.
-        Matcher matcher = PATTERN_URI.matcher(uriRef);
+        var matcher = PATTERN_URI.matcher(uriRef);
 
         // If the input string  matches the URI pattern.
         if (matcher.matches())
         {
             // The raw scheme.
-            String scheme = matcher.group("scheme");
+            var scheme = matcher.group("scheme");
 
             // If the raw scheme is valid.
             if (isSchemeValid(scheme))
@@ -221,7 +221,7 @@ class URIReferenceParser
     private void matchAsRelativeReference(ParseResult res, String uriRef)
     {
         // Get a matcher to match the input string as a relative reference.
-        Matcher matcher = PATTERN_REGEX_RELATIVE_REFERENCE.matcher(uriRef);
+        var matcher = PATTERN_REGEX_RELATIVE_REFERENCE.matcher(uriRef);
 
         // If the input string doesn't match the relative reference pattern.
         if (!matcher.matches())
@@ -240,7 +240,7 @@ class URIReferenceParser
     private void processAuthority(ParseResult res)
     {
         // The raw authority.
-        String authority = res.matcher.group("authority");
+        var authority = res.matcher.group("authority");
 
         // Parse the raw authority as an Authority instance.
         res.authority = Authority.parse(authority, res.charset);
@@ -250,7 +250,7 @@ class URIReferenceParser
     private void processPath(ParseResult res)
     {
         // The raw path.
-        String path = res.matcher.group("path");
+        var path = res.matcher.group("path");
 
         // Validate the raw path.
         new PathValidator().validate(
@@ -264,7 +264,7 @@ class URIReferenceParser
     private void processQuery(ParseResult res)
     {
         // The raw query.
-        String query = res.matcher.group("query");
+        var query = res.matcher.group("query");
 
         // Validate the raw query.
         new QueryValidator().validate(query, res.charset);
@@ -277,7 +277,7 @@ class URIReferenceParser
     private void processFragment(ParseResult res)
     {
         // The raw fragment.
-        String fragment = res.matcher.group("fragment");
+        var fragment = res.matcher.group("fragment");
 
         // Validate the raw fragment.
         new FragmentValidator().validate(fragment, res.charset);

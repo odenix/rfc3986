@@ -99,7 +99,7 @@ class HostTypeDeterminer
         }
 
         // Extract the content enclosed by brackets.
-        String enclosed = value.substring(1, value.length() - 1);
+        var enclosed = value.substring(1, value.length() - 1);
 
         try
         {

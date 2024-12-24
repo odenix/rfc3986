@@ -327,7 +327,7 @@ public class Authority implements Serializable, Comparable<Authority>
     @Override
     public String toString()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
 
         // Append the userinfo if present.
         if (userinfo != null)

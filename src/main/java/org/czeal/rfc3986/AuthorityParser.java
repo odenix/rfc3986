@@ -97,7 +97,7 @@ class AuthorityParser
         }
 
         // The parse result.
-        ParseResult res = new ParseResult();
+        var res = new ParseResult();
 
         // Process the authority.
         processAuthority(res, authority);
@@ -119,7 +119,7 @@ class AuthorityParser
     private void processAuthority(ParseResult res, String authority)
     {
         // Get a matcher to match the input string as an authority.
-        Matcher matcher = PATTERN_AUTHORITY.matcher(authority);
+        var matcher = PATTERN_AUTHORITY.matcher(authority);
 
         // Match the input string as an authority..
         if (!matcher.matches())
@@ -136,7 +136,7 @@ class AuthorityParser
     private void processUserinfo(ParseResult res, Charset charset)
     {
         // The raw userinfo.
-        String rawUserinfo = res.matcher.group("userinfo");
+        var rawUserinfo = res.matcher.group("userinfo");
 
         // Validate the raw userinfo.
         new UserinfoValidator().validate(rawUserinfo, charset);
@@ -149,7 +149,7 @@ class AuthorityParser
     private void processHost(ParseResult res, Charset charset)
     {
         // The raw host.
-        String rawHost = res.matcher.group("host");
+        var rawHost = res.matcher.group("host");
 
         // Parse the raw host value into a Host instance.
         res.host = Host.parse(rawHost, charset);
@@ -159,7 +159,7 @@ class AuthorityParser
     private void processPort(ParseResult res)
     {
         // The raw port.
-        String rawPort = res.matcher.group("port");
+        var rawPort = res.matcher.group("port");
 
         // Validate the raw port.
         new PortValidator().validate(rawPort);
