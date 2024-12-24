@@ -326,18 +326,12 @@ class Utils
      */
     static String dropLastSegment(String path, boolean dropLastSlash)
     {
-        // The regular expression for the target.
-        var regex = dropLastSlash ? "/?[^/]*$" : "[^/]*$";
-
-        // Get a matcher for the pattern.
-        var m = Pattern.compile(regex).matcher(path);
-
-        // Find the target. (Any inputs matches the pattern.)
-        //noinspection ResultOfMethodCallIgnored
-        m.find();
-
-        // Drop the target.
-        return m.replaceFirst("");
+        var lastSlashIndex = path.lastIndexOf('/');
+        if (lastSlashIndex == -1)
+        {
+            return "";
+        }
+        return path.substring(0, dropLastSlash ? lastSlashIndex : lastSlashIndex + 1);
     }
 
 
