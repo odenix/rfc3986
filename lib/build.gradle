@@ -15,11 +15,6 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
 }
 
-// Configure the test task to use the JUnit Platform for unit tests.
-tasks.named('test') {
-    useJUnitPlatform()
-}
-
 // Configure the jar task to include the project version in the generated JAR file name.
 jar {
     archiveBaseName = 'rfc3986'
@@ -27,8 +22,10 @@ jar {
     archiveClassifier = null
 }
 
-// Configure the test logging to be more verbose and informative.
 test {
+    // Configure the test task to use the JUnit Platform for unit tests.
+    useJUnitPlatform()
+    // Configure the test logging to be more verbose and informative.
     testLogging {
         showStandardStreams = true
     }
