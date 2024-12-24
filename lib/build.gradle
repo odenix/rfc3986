@@ -15,6 +15,20 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
 }
 
+def jdkVersion = 21
+def jdkTargetVersion = 17
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(jdkVersion)
+        vendor = JvmVendorSpec.ORACLE
+    }
+}
+
+tasks.withType(JavaCompile.class).configureEach {
+  options.release = jdkTargetVersion
+}
+
 // Configure the jar task to include the project version in the generated JAR file name.
 jar {
     archiveBaseName = 'rfc3986'
